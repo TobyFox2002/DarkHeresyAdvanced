@@ -1,0 +1,2517 @@
+/* + ================================================================================+ */
+/* |                             Dark Heresy Style Sheet Details                     | */
+/* | FILENAME: Dark Heresy1e-variant.css                VERSION: 0.01a (pre-release) | */
+/* | AUTHOR: TobyFox2002              CONTACT: DreamFoxGamesNOSPAM@NOSPAMcomcast.net | */
+/* |                                                                  (remove NOSPAM)| */
+/* | Desc:    This file contains the style sheets for Dark Heresy.  This is not the  | */
+/* |          original version of the DH1e character sheet.                          | */
+/* + =============================================================================== | */
+
+/* This MUST BE AT THE TOP of the style sheet file. */
+.repcontainer .repitem .itemcontrol {z-index: 99999 !important;} /* Force delete button to top */
+
+/* Any color setting that uses AQUA is for debugging only as is any style that is prefaced with "DEBUG-" in all caps. */
+/* */
+/* === Core Universal styles === */
+.sheet-center {text-align: center;}
+.sheet-left {text-align: left;}
+.sheet-right {text-align: right;}
+.sheet-h2-5em {height: 2.5em !important;}
+/* ======      Dice and Symbol Fonts          == */
+.sheet-pictos      {font-family:        "Pictos" !important;}
+/* + ================================================================================== +*/
+/* |   # =  trashcan   |   & = plus symbol    |   ( = closed lock   |   ) = open lock   |*/
+/* |   + = multiply    |   + = plus btn       |   - = neg btn       |   4 = rt triangle |*/
+/* |   ? = info btn    |   D = x btn          |   _ = neg symb.     |   ` = expand      |*/
+/* |   y = cogwheel    |                      |                     |                   |*/
+/* | ================================================================================== +*/
+/* | Full list at https://wiki.roll20.net/CSS_Wizardry#Icon_Fonts                       |*/
+
+.sheet-d20font      {font-family:    "dicefont20" !important;}
+.sheet-d10font      {font-family:    "dicefont10" !important;}
+
+.sheet-inlineblock {display: inline-block !important;}
+.sheet-inline      {display: inline       !important;}
+.sheet-block       {display: inline       !important;}
+
+.sheet-noshow {display: none !important;}
+
+.ui-dialog .charsheet button[type=roll],
+.ui-dialog .charsheet button[type=compendium] {
+    padding: 2px 3px;
+    font-size: 1.3em;
+    margin: 0px 3px 0px 3px;
+}
+/* === Fake Checkboxes and Show/Hide Triggers === */
+.charsheet .sheet-boldlabel-check:checked + b:not(.sheet-offCase) {
+	display: inline-block;
+	width: 6em;
+    background-color: #4a6486;
+    color: White;
+    border-radius: 5px;
+	border: 1px solid black;
+}
+.charsheet .sheet-boldlabel-check + b:not(.sheet-offCase) {
+    display: inline-block;
+	width: 6em;
+    line-height: 1em;
+    margin: 0px 0px 0px 0px;
+    padding: 1px .5em 1px .25em;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+}
+.charsheet .sheet-section-collapse + b {
+    display: block;
+    /* line-height: 1em; */
+    margin-top: 0.3em;
+    padding: 1px 0.5em 0px .25em;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: .3em;
+    line-height: 12px;
+}
+/* === Labels === */
+.sheet-small-label {
+    font-size: 85%!important;
+    font-style: italic;
+    font-weight: bold;
+    color: black;
+	padding-top: 1em !important;
+}
+/*----------- Tabs Setup -------------*/
+div.sheet-section-hide {
+    display: none;
+}
+
+input.sheet-section-toggle[value='1']~div.sheet-section-hide{
+    display: contents;
+}
+
+/*this hides the contents of each tab by default*/
+.charsheet div[class^="sheet-section"] {
+	display: none;
+}
+/* ============================================================= */
+/* Override Controls */
+body {
+	font-size: 13px !important;
+}
+/* Added in in Toby's Custom Sheet to provide support for all browsers with styled repeating sections. */
+
+
+.sheet-boldlabel-check:checked  .sheet-notready + b:not(.sheet-offCase) {
+	background-color: red;
+	color: white !important;
+}
+.sheet-table {
+    display: table;
+    width: 100%;
+}
+.sheet-small-label {
+    font-size: 85%!important;
+    font-style: italic;
+    font-weight: bold;
+    color: black;
+}
+
+.sheet-secondary-table-name,
+.sheet-table-name {
+    display: table-caption;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    width: 100%;
+}
+
+.sheet-secondary-table-name {
+    background-color: #4a6486 !important;
+}
+
+.sheet-th-black {
+	display: table-cell;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	background-color: black;
+}
+.sheet-table-data {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.sheet-table-data label {
+    font-size: 13px !important;
+    font-weight: normal;
+    display: block;
+    margin: 0 auto;
+    color: black;
+}
+
+.sheet-table-row {
+    display: table-row;
+    vertical-align: bottom;
+    width: 100%;    
+}
+
+.sheet-table-row-name {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+}
+
+.sheet-statlabel-sm {
+	display: table-cell;
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    font-size: 66%;
+    font-weight: bold; 
+    text-align: center;
+    padding: 0px;
+    white-space: nowrap;
+}
+.sheet-statlabel-big {
+    display: table-cell;
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold; 
+    text-align: center;
+	vertical-align: middle;
+    position: relative;
+    padding: 1em 0 0 0;
+    white-space: nowrap;
+}
+
+input[type="text"]:disabled, input[type="number"]:disabled {
+    background-color: rgba(74, 100, 134, 0.28);
+    border: 0 solid black;
+}
+input[readonly], input.sheet-calc, 
+input[type="number"].sheet-calc {
+	background-color: rgba(74, 100, 134, 0.28);
+    border: 0 solid black;
+	text-align: right;
+	padding-left:2px;
+	padding-right:0px;
+	padding-top:2px;
+	padding-bottom:2px;
+	margin-left:1px;
+	margin-right:1px;
+	margin-top:0px;
+	margin-bottom:0px;
+	border-width:0px;
+}
+
+div[class^="sheet-npc"] {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+	overflow: hidden;
+}
+
+b[title],span[title] {
+    cursor: help;
+}
+
+
+.sheet-header-row {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding-left: 10px;
+    min-height: 1em;
+    margin-bottom: 0.5em;
+}
+
+input.sheet-skills-tab1:checked + span.sheet-skills-tab1, /* Adventure Skills Tab */
+input.sheet-skills-tab2:checked + span.sheet-skills-tab2, /* Background Skills Tab*/
+input.sheet-skills-tab3:checked + span.sheet-skills-tab3, /* Consolidated Skills Tab*/
+input.sheet-skills-tab4:checked + span.sheet-skills-tab4, /* All Skill Stab */
+input.sheet-skills-tab5:checked + span.sheet-skills-tab5, /* Conditional Notes Tab*/
+input.sheet-skills-tab6:checked + span.sheet-skills-tab6, /* Configuration Tab */
+input.sheet-spells_level-tab0:checked + span.sheet-spells_level-tab0,
+input.sheet-spells_level-tab1:checked + span.sheet-spells_level-tab1,
+input.sheet-spells_level-tab2:checked + span.sheet-spells_level-tab2,
+input.sheet-spells_level-tab3:checked + span.sheet-spells_level-tab3,
+input.sheet-spells_level-tab4:checked + span.sheet-spells_level-tab4,
+input.sheet-spells_level-tab5:checked + span.sheet-spells_level-tab5,
+input.sheet-spells_level-tab6:checked + span.sheet-spells_level-tab6,
+input.sheet-spells_level-tab7:checked + span.sheet-spells_level-tab7,
+input.sheet-spells_level-tab8:checked + span.sheet-spells_level-tab8,
+input.sheet-spells_level-tab9:checked + span.sheet-spells_level-tab9,
+input.sheet-spells_level-tab99:checked + span.sheet-spells_level-tab99,
+input.sheet-spellclass-tab0:checked + span.sheet-spellclass-tab0,
+input.sheet-spellclass-tab1:checked + span.sheet-spellclass-tab1,
+input.sheet-spellclass-tab2:checked + span.sheet-spellclass-tab2,
+input.sheet-spellclass-tab3:checked + span.sheet-spellclass-tab3,
+input.sheet-spellclass-tab4:checked + span.sheet-spellclass-tab4,
+input.sheet-psiclass-tab0:checked + span.sheet-psiclass-tab0,
+input.sheet-psiclass-tab1:checked + span.sheet-psiclass-tab1 {
+    background: black;
+    color: white;
+}
+/* Maybe never used?
+.sheet-unchained-show:(:checked) + span.sheet-skills-tab1, /* Adventure Skills Tab 
+.sheet-unchained-show:(:checked) + span.sheet-skills-tab2,
+.sheet-unchained-show:(:checked) + span.sheet-skills-tab3 {
+	display: none
+} */
+/*
+.sheet-tab12 {
+    display:none !important;
+}*/
+
+.sheet-pictos {
+  font-family: "Pictos"; 
+}
+
+.sheet-text-button {
+    font-size: 100%;
+    color: white;
+	background-color: black;
+	border: 0;
+}
+
+button,
+button:hover,
+button:active
+{
+    background-image: none;
+}
+/* REMOVED
+input[type="checkbox"] + span:not(.sheet-not-sheet-show)::before
+{
+    margin-right: 4px;
+    line-height: 14px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    content: "[show]";
+    width: 14px;
+    height: 14px;
+    font-size: 12px;
+}
+
+input[type="checkbox"]:checked + span:not(.sheet-not-sheet-show)::before
+{
+    content: "[hide]";
+} */
+
+
+.sheet-no-pad-right {
+    padding-right: 0!important;
+}
+div.sheet-flex {
+	display:flex !important;
+}
+hr {
+    border-color: black;
+}
+
+.sheet-npc-hr {
+    padding: 0;
+    margin: 0;
+}
+
+.sheet-margin-bottom {
+    margin-bottom: 15px;
+}
+
+.sheet-margin-top {
+    margin-top: 15px;
+}
+
+.sheet-sect.sheet-expand .sheet-level-showlabel,
+.sheet-sect.sheet-expand .sheet-all-saves-macro-showlabel {
+    width: 11em;
+}
+.sheet-sect.sheet-expand .sheet-level-show,
+.sheet-sect.sheet-expand .sheet-iterations-show,
+.sheet-sect.sheet-expand .sheet-advmacro-text-show,
+.sheet-sect.sheet-expand .sheet-armor-attributes-show,
+.sheet-sect.sheet-expand .sheet-all-saves-macro-show {
+    width: 11em;
+    margin-right: -11em;
+}
+.sheet-sect.sheet-expand .sheet-attack-damage,
+.sheet-sect.sheet-expand .sheet-options-showlabel,
+.sheet-sect.sheet-expand .sheet-desc-showlabel,
+.sheet-sect.sheet-expand .sheet-macro-text-showlabel,
+.sheet-sect.sheet-expand .sheet-attack-damage-showlabel,
+.sheet-sect.sheet-expand .sheet-advmacro-text-showlabel,
+.sheet-sect.sheet-expand .sheet-init-notes-showlabel,
+.sheet-sect.sheet-expand .sheet-save-notes-showlabel,
+.sheet-sect.sheet-expand .sheet-extra-damage-showlabel {
+    width: 9em;
+}
+.sheet-spellrange-header {
+    width: 15%;
+}
+/* used to highlight background of sub-nav row on repeating sections */
+hr.sheet-subnav-hr {
+	width: 100%;
+	border: 12px solid #DAE4F2; /* .75rem */
+	margin-top: 24px; /* -1.45rem */
+}
+.sheet-spellrange-data {
+    width: 100% !important;
+    text-align: center !important;
+}
+
+.sheet-iterative-attack-value {
+    width:24% !important;
+}
+
+.sheet-iterative-macro {
+    width:90% !important;
+}
+
+.sheet-iterative_attack_section {
+    margin-bottom:0.5em !important;
+    margin-left: 2px !important;
+}
+
+
+/* ********************************* 3.5 Character Sheet Crossovers *************/
+textarea.sheet-skillmacro {
+	width: 100%; /* 100% / 2px  (537px 87px) */
+	height: 2em;
+	margin-bottom: 1px;
+	overflow: hidden;
+}
+.sheet-tdcs { /*Table Data Center Small*/
+    display:table-cell;
+    text-align:center;
+    font-size: 100%;
+    vertical-align: middle;
+    position: relative;
+	white-space: nowrap;
+}
+.sheet-tdcs-sub {
+    display:table-cell;
+    text-align:center;
+    line-height: 60%;
+    font-size: 100%;
+    vertical-align: middle;
+    position: relative;
+	white-space: nowrap;
+}
+.sheet-tdls { /*Table Data left Small*/
+    display:table-cell;
+    text-align:left;
+    font-size: 100%;
+    vertical-align: middle;
+    position: relative;
+	white-space: nowrap;
+}
+
+.sheet-curvedtop { /* This creates a rounded off top with a radius of 12px on the top two corners.  */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.sheet-curvedbottom { /* Same as above for the bottom corners */
+	border-bottom-left-radius: 12px;
+	border-bottom-right-radius: 12px;
+}
+/* Preset Widths */
+.sheet-onedigit {width: 1.3em !important;}   /* Creates a fixed with one digit long */
+.sheet-twodigit {width: 1.9em !important;}   /*  "   " two digits long   */
+.sheet-threedigit {width: 2.4em !important;} /*  "   " three digits long */
+.sheet-classdigit {width: 3.5em !important;} /* Used to constrain text fields num field width for class info */
+.sheet-modselect {width: 4.8em !important;} /* Used for ability mod selection boxes */
+
+.sheet-rep-damage-macro {height: 2em; overflow: hidden;}
+/* Spells, Psionics, & Special Abilities Styles */
+.sheet-tinylabel {
+	font-size: .87em;
+	line-height: 0.9em;
+	font-style: italic;
+	font-weight: bold;
+	padding-left: 0.7em;
+ }
+.sheet-compact { 
+	min-width: 0em !important;
+	height: 100% !important;
+	padding: 0em;
+}
+
+/* Repeating Section Styles, Weapon and Charged Items */
+/* Borders for spell page and class action repeating section rows */
+div[data-groupname^="repeating_lvl"] .repitem,
+/*div[data-groupname^="repeating_spellclass"] .repitem, */
+div[data-groupname^="repeating_classactions"] .repitem, 
+/*div[data-groupname^="repeating_psi"] .repitem, */
+div[data-groupname^="repeating_inv"] .repitem,
+.sheet-npc-row,
+div[class^="sheet-classaction-row"],
+.sheet-chargeditem-row {
+	border: 1px solid #000000;
+	/*width: 55.4em; */
+	border-radius: 12px;
+	margin-left: 2px;
+	margin-bottom: 5px;
+	padding: 0px;
+	background: #eee;
+}
+
+/* Sorting CODE */
+
+/* second group with wildcard is if HTML5 interferes */
+.sheet-tabinput.sheet-tab0:checked + .sheet-tab.sheet-tab0,
+.sheet-tabinput.sheet-tab1:checked + .sheet-tab.sheet-tab1,
+.sheet-tabinput.sheet-tab2:checked + .sheet-tab.sheet-tab2,
+.sheet-tabinput.sheet-tab3:checked + .sheet-tab.sheet-tab3,
+.sheet-tabinput.sheet-tab4:checked + .sheet-tab.sheet-tab4,
+.sheet-tabinput.sheet-tab5:checked + .sheet-tab.sheet-tab5,
+.sheet-tabinput.sheet-tab6:checked + .sheet-tab.sheet-tab6,
+.sheet-tabinput.sheet-tab7:checked + .sheet-tab.sheet-tab7,
+.sheet-tabinput.sheet-tab8:checked + .sheet-tab.sheet-tab8,
+.sheet-tabinput.sheet-tab9:checked + .sheet-tab.sheet-tab9,
+.sheet-tabinput.sheet-tab10:checked + .sheet-tab.sheet-tab10,
+.sheet-tabinput.sheet-tab11:checked + .sheet-tab.sheet-tab11,
+.sheet-tabinput.sheet-tab99:checked ~ .sheet-tab.sheet-tab99 {
+	background:Black;
+	color:White;
+}
+
+
+label {
+	font-size:inherit;
+	line-height:1em;
+	margin-bottom:initial;
+	/* padding-right:initial; */
+	width:initial;
+	color:initial;
+	position:relative;
+}
+select {
+	width:100%;
+	margin:initial;
+}
+
+textarea {
+	height:initial;
+	resize:initial;
+	background-color:white !important;
+	overflow-x:auto;
+	overflow-y:auto;
+	box-sizing: border-box;
+	margin-top: 0.3%;
+}
+.sheet-desc, .sheet-macro-text, .sheet-notes {
+	height:8.4em;
+	resize:vertical;
+	width:100%;
+	display:block;
+	clear:both;
+	vertical-align:top;
+}
+
+.sheet-half {
+	height:4em;
+}
+.sheet-inline-textarea,
+.sheet-skill-macro-text,
+.sheet-inline-textarea-both {
+	height:2.15em;
+	width:100%;
+	margin: 0;
+	resize:vertical;
+}
+.sheet-sk-hm-chk {
+	vertical-align: -webkit-baseline-middle !important;
+	vertical-align: middle !important;
+	margin-top: -20px;
+}
+.sheet-inline-textarea-both {
+	resize:both;
+}
+.sheet-skill-macro-text {
+	height:1.85em;
+}
+.sheet-extra-damage .sheet-small-label2 textarea {
+	resize:both;
+}
+
+.sheet-cheat {
+	width:100%;
+	display:block;
+	clear:both;
+}
+
+h2,h3,h4,h5,h6,
+.sheet-table-name,
+.sheet-table-header,
+.sheet-text-button,
+.sheet-tab {
+	font-family: Arial, sans-serif;
+	font-size: 13px; /*BUGGED */
+}
+
+.sheet-table-cell span[title],  .sheet-table-header[title], .sheet-small-label2 span[title] {
+	cursor: help;
+}
+
+.sheet-table {
+	display     : table;
+	width       : 100%;
+}
+
+/* make error row more visible (colorblind users could not see slightly darker border )
+also need 1 more level in selector or base css will override border */
+
+.sheet-error {
+	color:Red;
+	font-size: 14px; /* .825rem */
+	background-color:White;
+	margin-left:.25em;
+}
+
+.repitem:not(.repitembroken) .sheet-error {
+	display:none;
+}
+.sheet-small-label {
+	font-size: .85em;
+	font-style: italic;
+	font-weight: bold;
+	color:Black;
+}
+
+.sheet-secondary-table-name {
+	display: table-caption;
+	text-align: center;
+	font-weight: bold;
+	color:White;
+	background-color: #4a6486;
+	width: 100%;
+}
+
+.sheet-table-cell {
+	display: table-cell;
+	vertical-align: middle;
+	text-align:center;
+	padding-left:.125em;
+	padding-right:.125em;
+	padding-bottom:.125em;
+}
+.sheet-tcsl {
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: .125em;
+	padding-right: .125em;
+	padding-bottom: .125em;
+	font-size: 85%!important;
+	font-style: italic;
+	font-weight: bold;
+	color: black;
+	text-align: center;
+	
+}
+
+.sheet-tcsl input {
+	font-style: normal;	
+}
+
+.sheet-total-row { 
+	display: table-row;
+	vertical-align: bottom;
+	height: 32px; /* 2rem */
+	width:100%;
+	overflow:hidden;
+	border-collapse:collapse;
+}
+/**/
+
+.sheet-select-small {
+	font-size: 12px; /* .765rem; BUGGED */
+	height: 2em;
+	padding: 0;
+	min-width: 3.5em;
+	width: 100%;
+}
+/*.sheet-table-cell > select:not(.sheet-select-small) {	height:1.9em;} */
+.sheet-small-label2 > select.sheet-select-small {
+	height:2em;
+}
+
+/* color for disabled/sheet-calc */
+.sheet-calc, input.sheet-calc, input:disabled {
+	background-color:#4A6486;
+	background-color: rgba(74, 100, 134, 0.28);
+	border-width: 0px;
+	color: #222;
+	padding-left:.25em;
+	min-width:2.85em;
+}
+
+input.sheet-calc {
+	border-bottom-color:transparent;
+	border-bottom-width:0px;
+}
+
+/* CHROME: hide spinner area at right when readonly or when not hovering over a number */
+/*
+input[readonly]::-webkit-inner-spin-button ,
+input.sheet-calc::-webkit-inner-spin-button ,
+input.disabled::-webkit-inner-spin-button,
+input[type="number"]:not(:hover)::-webkit-inner-spin-button  {
+    -webkit-appearance: none;
+    margin-right:0px;
+    padding-right:.25em;
+}
+*/
+/* FIREFOX: hide spinner for all disabled/sheet-calc */
+input.sheet-calc[type="number"]:hover,
+input.sheet-calc[type="number"]:focus,
+input[type="number"].sheet-calc,
+input[type="number"]:disabled {
+	-webkit-appearance: none;
+	-moz-appearance: textfield !important;
+	-moz-padding-end:.5em !important;
+	padding-inline-end: .5em;
+}
+
+
+.sheet-text-button, button.sheet-text-button  {
+	font-size: 16px; /* 1.05rem; */
+	color:White;
+	background-color:Black;
+	border: 0;
+	width:90%;
+	padding:.125em .125em .125em .25em;
+	font-weight:normal;
+}
+
+span.sheet-text-button  {
+	padding-left:1.8em;
+}
+
+/******************************* API COMMAND BUTTONS *************************************/
+.sheet-command-button {
+	background-color:#ce0f69;
+	color:#FFFFFF;
+}
+
+button[type=roll].sheet-command-button::before {
+	content: "";
+}
+/************************************* BUFFS ******************************************/
+.sheet-option-header {
+    border-top:1px solid black !important;
+    background-color: lightgrey;
+}
+
+.sheet-linked-fields {
+	display:inline-block;
+	margin-left:0px;
+	margin-right:0px;
+	width:auto;
+}
+
+
+.sheet-maxhealbutton + span::before,
+.sheet-newbuff-button + span::before,
+.sheet-newtemplate-button + span::before {
+    content: '✚'; /*'⛨☤';*/
+ /*   vertical-align:top;	
+    padding: 3px 2px 1px 1px;*/
+	width:1.6em;
+	height:1.6em;
+}
+
+
+/*********************************************** */
+.sheet-cssbutton-label {
+    margin-left: -3em;
+    font-weight: bold;
+    font-size: 11px; /*.666rem; */
+    font-style: italic;
+    vertical-align: bottom;
+    cursor: help;
+}
+.sheet-small-label2 .sheet-cssbutton-label {
+    margin-left:-.25em;
+}
+
+
+/* if all pressed show all */
+.sheet-tabs.sheet-custbordernav ~ .sheet-tabinput.sheet-tab99:checked ~ .sheet-repeating-fields .sheet-custrepeating-border {
+	display:block !important;
+}
+
+.sheet-hiderepborder .sheet-table-repeating .sheet-counted {
+    top: 1.5em;
+}
+.sheet-hiderepborder .repcontainer .repitem {
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 2px;
+}
+.sheet-hiderepborder .repcontainer .repitem .sheet-custrepeating-border {
+	padding: 2px;
+	margin: 1px 0 0 0;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+/* custom tab overrides */
+
+
+/************************************* BUFFS ******************************************/
+.sheet-inline-textarea {
+    height: 2.15em;
+    min-height: 2.15em;
+    width: calc(100% - 4px);
+    margin: 0;
+    resize: vertical;
+}
+
+.sheet-super::after  {
+    margin-left: .25em;
+    font-size: 11px; /* 1rem; */
+	vertical-align: super;
+    font-weight: normal;
+    color: black;
+}
+.sheet-note-a::after {content: '(a)';}
+.sheet-note-b::after {content: '(b)';}
+.sheet-note-c::after {content: '(c)';}
+.sheet-note-d::after {content: '(d)';}
+
+.sheet-deletebutton {
+    margin: 0 -1.4rem 2px 2rem;
+}
+.sheet-deletebutton + span::before {
+	font-family: "Pictos" !important;
+	content: '#';
+	padding-left: 2px;
+	padding-top: 0px;
+	vertical-align: top;
+}
+
+/***************** collapse/expand rows arrow added after text found preceding span ******************************/
+.sheet-split-column-show:not(:checked)  ~ .sheet-repeating-fields .repitem {
+	clear:both;
+}
+
+.sheet-split-column-show:checked  ~ .sheet-repeating-fields .repitem {
+	width:50%;
+	display:inline-block;
+}
+.sheet-split-column-show:checked  ~ .sheet-repeating-fields .repitem:nth-child(odd),
+.sheet-split-column-show:checked  ~ .sheet-repeating-fields .repitem:first-child(odd){
+	float:left;
+}
+.sheet-split-column-show:checked  ~ .sheet-repeating-fields .repitem:nth-child(even){
+	float:right;
+}
+
+
+/* standalone toggles */
+.sheet-minimize-show:checked ~ .sheet-repeating-fields .sheet-linked-fields .sheet-macro-text-inline,
+/* repeating rows */
+.sheet-counted:not(:checked) ~ .sheet-linked-fields .sheet-macro-text-inline,
+.sheet-sect-show.sheet-sect-show-inverse, .sheet-sect-show .sheet-noshow
+.sheet-misc-show:not(.sheet-showarrow), .sheet-spontaneous-show,
+.sheet-nextitem-show,.sheet-tabcopy, .sheet-error-show, .sheet-warn-show, .sheet-error-mshow, .sheet-warn-mshow {
+	display:none !important;
+}
+
+/* By Default HIDE all wClass specific fields */
+.charsheet .sheet-select,
+.charsheet .sheet-basic,
+.charsheet .sheet-heavy,
+.charsheet .sheet-melee,
+.charsheet .sheet-pistol,
+.charsheet .sheet-thrown {
+    display: none !important;
+}
+.charsheet .sheet-wClass-toggle[value="select"]  ~ .sheet-select,
+.charsheet .sheet-wClass-toggle[value="basic"]     ~ .sheet-basic,
+.charsheet .sheet-wClass-toggle[value="heavy"]     ~ .sheet-heavy,
+.charsheet .sheet-wClass-toggle[value="melee"]     ~ .sheet-melee,
+.charsheet .sheet-wClass-toggle[value="Pistol"]    ~ .sheet-pistol,
+.charsheet .sheet-wClass-toggle[value="Thrown"]    ~ .sheet-thrown {
+    display: inline-block !important;
+}
+
+.charsheet .sheet-wClass-toggle[value="select"]  ~ .sheet-hide-ranged,
+.charsheet .sheet-wClass-toggle[value="basic"]     ~ .sheet-hide-melee,
+.charsheet .sheet-wClass-toggle[value="heavy"]     ~ .sheet-hide-melee,
+.charsheet .sheet-wClass-toggle[value="melee"]     ~ .sheet-hide-ranged,
+.charsheet .sheet-wClass-toggle[value="Pistol"]    ~ .sheet-hide-melee,
+.charsheet .sheet-wClass-toggle[value="Thrown"]    ~ .sheet-hide-melee {
+    display: none !important;
+}
+
+
+/* Rate of Fire */
+/* top: -4px, */
+.charsheet .sheet-RoFGroup {
+	top: -4px;
+	margin: 0 0.5em 0 0.5em !important;
+}
+.charsheet .sheet-RoFGroup > input {
+	height: 26px !important;
+}
+.charsheet .sheet-ClipGroup {
+	top: -4px;
+	margin: 0 0.5em 0 0.5em !important;
+}
+.charsheet .sheet-ClipGroup > input {
+	height: 26px !important;
+}
+.charsheet .sheet-RangeGroup {
+	top: -4px;
+	margin: 0 0.5em 0 0.5em !important;
+}
+.charsheet .sheet-RangeGroup > input {
+	height: 26px !important;
+}
+
+.charsheet .sheet-wrapper textarea.sheet-repnotes {
+	width: 100%; height: 1.7em; line-height: 1.2em;
+}
+
+.charsheet .sheet-wrapper label.sheet-repname {width: 30em}
+.charsheet .sheet-split-column-show:checked ~ .sheet-repeating-fields label.sheet-repname {
+	width: 10em;
+}
+/* .charsheet .sheet-wrapper label.sheet-damtype {width: ~~} ~ Inherited */
+.charsheet .sheet-split-column-show:checked ~ .sheet-repeating-fields label.sheet-damtype {
+	width: 3em;
+}
+.charsheet .sheet-wrapper div.sheet-weap-notes {width: 38%}
+.charsheet .sheet-split-column-show:checked ~ .sheet-repeating-fields div.sheet-weap-notes {
+	width: 66%;
+}
+
+/* ARROWS */
+.sheet-cssbutton,  /* REQUIRED: "Nav Button" Checkboxes */
+.sheet-showarrow,
+.sheet-refreshbutton,
+.sheet-split-column-show,
+.sheet-lock-show,
+.sheet-counted {
+	opacity      : 0;
+	position     : relative;
+	top          : 0;
+	left         : 0;
+	cursor       : pointer;
+	z-index      : 5;
+}
+.sheet-cssbutton,
+.sheet-refreshbutton,
+.sheet-addarmorbutton,
+.sheet-configbutton,
+.sheet-addshieldbutton,
+.sheet-createmacrobutton,
+.sheet-createattackbutton {
+    margin-right: 15px; /* -1.5rem */
+}
+.sheet-lock-show,
+.sheet-split-column-show,
+.sheet-readonly-show,
+.sheet-createattackbutton {
+    margin: 0 -14px 2px 0; /*0 -1.4rem 2px 0 */
+}
+.sheet-createattackbutton + span::before {
+    content: '⚔';
+    margin-top: 5px;
+    vertical-align:top;	
+    padding: 3px 0 0 0 !important;
+}
+.sheet-small-label2 .sheet-createattackbutton + span::before {
+    padding: 4px;
+    margin-top: 2px;
+}
+
+input.sheet-cssbutton, input.sheet-showarrow,
+input.sheet-refreshbutton, input.sheet-split-column-show, input.sheet-lock-show , input.sheet-counted {
+	height: 1.6em;
+}
+h2 label {
+	color:inherit !important;
+}
+
+.sheet-showarrow + .sheet-showsect::before{
+	margin-right:.25em;
+}
+
+.sheet-counted  + span::before,
+.sheet-showarrow + .sheet-showsect::before {
+	display: inline-block;
+	content: '►';
+	width: 1em;
+	height: 1em;
+	font-size: 1em;
+	color:DarkGrey;
+}
+
+.sheet-counted:checked + span::before,
+.sheet-showarrow:checked + .sheet-showsect::before {
+	content: '▼';
+}
+
+
+.sheet-showsect,  label.sheet-tab, .sheet-clickheader  {
+	position:relative;
+}
+.sheet-showsect, h3.sheet-clickheader, h2.sheet-clickheader {
+	display:inline-block;
+	margin-left:-.25em;
+}
+
+.sheet-skills  .sheet-showsect, .sheet-skill-minishow {
+	width:12em;
+	color:#333;
+	padding:0px 1px 0px 1px;
+}
+.sheet-skills .sheet-showarrow {
+	width:12em;
+	margin-right:-12em;
+}
+
+.sheet-sect.sheet-expand .sheet-options-showlabel,
+.sheet-sect.sheet-expand .sheet-desc-showlabel,
+.sheet-sect.sheet-expand .sheet-save-showlabel,
+.sheet-sect.sheet-expand .sheet-misc-showlabel,
+.sheet-sect.sheet-expand .sheet-macro-text-showlabel,
+.sheet-sect.sheet-expand .sheet-augments-showlabel,
+.sheet-sect.sheet-expand .sheet-extra-damage-showlabel,
+.sheet-sect.sheet-expand .sheet-ESCond-showlabel,
+.sheet-sect.sheet-expand .sheet-DCMod-showlabel,
+.sheet-sect.sheet-expand .sheet-ESCfg-showlabel,
+.sheet-sect.sheet-expand .sheet-misc-attack-showlabel {
+	width:8em;
+}
+.sheet-sect.sheet-expand .sheet-options-show,
+.sheet-sect.sheet-expand .sheet-desc-show,
+.sheet-sect.sheet-expand .sheet-save-show,
+.sheet-sect.sheet-expand .sheet-misc-show,
+.sheet-sect.sheet-expand .sheet-macro-text-show,
+.sheet-sect.sheet-expand .sheet-augments-show,
+.sheet-sect.sheet-expand .sheet-extra-damage-show,
+.sheet-sect.sheet-expand .sheet-ESCond-show,
+.sheet-sect.sheet-expand .sheet-DCMod-show,
+.sheet-sect.sheet-expand .sheet-ESCfg-show,
+.sheet-sect.sheet-expand .sheet-misc-attack-show {
+	width:8em;
+	margin-right:-8em;
+}
+.sheet-sect.sheet-expand .sheet-iterations-showlabel {
+	width:10em;
+}
+.sheet-sect.sheet-expand .sheet-iterations-show {
+	width:10em;
+	margin-right:-10em;
+}
+
+
+.sheet-sect.sheet-expand .sheet-id-show {
+	width:4em;
+	margin-right:-4em;
+}
+.sheet-split-column-show:not(:checked) ~ .sheet-repeating-fields .sheet-sect.sheet-expand .sheet-showarrow:first-child  {
+	margin-left:.125em;
+}
+.sheet-sect.sheet-expand .sheet-showsect {
+	margin-right:1em;
+}
+.repitem .sheet-sect.sheet-expand {
+	display:block;
+	clear:both;
+	width:100%;
+}
+
+.sheet-innerlabel,
+.sheet-innerlabel.sheet-showarrow {
+	position:absolute !important;
+	opacity:0;
+	width:100%;
+	height:100%;
+	z-index:99;
+	margin:0;
+	padding:0;
+}
+.sheet-progress-icon {
+	position:absolute;
+	z-index: 5;
+    top: 4em;
+    color: red;
+    background-color: white;
+}
+.sheet-progress-show:not(:checked) ~ .sheet-progress-icon {
+	display: none;
+}
+/* generic css buttons borders and colors only */
+.sheet-cssbutton {
+	width: 1.4rem !important;
+}
+.sheet-lock-show, .sheet-split-column-show, .sheet-minimize-show  {
+	margin: 0px -20px 2px 5px !important; /* -1.4rem/.33rem */
+}
+
+.sheet-refreshbutton,
+.sheet-cssbutton {
+	margin-right: -16px; /* -1.5rem */
+}
+
+.sheet-cssbutton + span::before {
+    display: inline-block;
+    font-size: 16px; /* 1rem */
+	margin:2px;
+	padding:0px 2px 0px 2px;
+	font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #808080;
+	background-color: #FFFFFF;
+	color:Black;
+	text-align:center;
+	font-style:normal !important;
+	width: 24px !important;  /* 1.4 rem */
+	height: 24px !important; /* 1.4 rem */
+	box-sizing: border-box;
+}
+
+.sheet-minimize-show:checked ~ .sheet-lock-show + span::before,
+.sheet-cssbutton:checked + span::before {
+	background-color: #4a6486;
+	color: #DDDDDD;
+}
+.sheet-lock-show + span::before {
+	font-family: "Pictos" !important;
+	content: '(';
+}
+.sheet-minimize-show:checked ~ .sheet-lock-show + span::before,
+.sheet-lock-show:checked + span::before {
+	font-family: "Pictos" !important;
+	content: ')';
+}
+.sheet-minimize-show  + span::before {
+	font-family: "Pictos" !important;
+	content: '_';
+}
+.sheet-minimize-show:checked + span::before {
+	font-family: Arial, Sans-serif !important;
+	content: '☐';
+}
+.sheet-split-column-show + span::before {
+	content:'☷';
+}
+.sheet-split-column-show:checked + span::before {
+	content:'☰';
+}
+.sheet-refreshbutton + span::before {
+	font-family: "Pictos" !important;
+	content:'1';
+	margin-top:5px;
+}
+.sheet-small-label2 .sheet-refreshbutton + span::before {
+	padding:4px;
+	margin-left:20%;
+	margin-top:2px;
+}
+.sheet-small-label2 input[type="checkbox"].sheet-refreshbutton {
+	-webkit-margin-before:0px;
+	display:inline-block;
+}
+
+.sheet-showarrow:hover + .sheet-showsect,
+.sheet-showarrow:hover + .sheet-showsect::before,
+.sheet-counted:hover + span,
+.sheet-counted:hover + span::before,
+.sheet-cssbutton:hover ,
+.sheet-cssbutton:hover + span::before {
+	color:Red;
+	border-color:Red;
+}
+
+.charsheet .sheet-split-column-show:checked ~ .sheet-repeating-fields .sheet-limit {
+	display: none;
+}
+
+/***********************repeating item counter ************************************/
+.sheet-repeating-fields {
+	counter-reset: sheet-rep-items -1;
+}
+/* do not allow user to click when minimized */
+.sheet-minimize-show:checked ~ .sheet-lock-show,
+.sheet-minimize-show:checked ~ .sheet-repeating-fields .sheet-counted ,
+.sheet-lock-show:checked ~ .sheet-repeating-fields .sheet-counted,
+.sheet-lock-show:checked ~ .sheet-repeating-fields .sheet-showsect {
+	pointer-events: none;
+	display: none;
+}
+.sheet-minimize-show:checked ~ .sheet-repeating-fields .sheet-counted:checked + span::before,
+.sheet-minimize-show:checked ~ .sheet-repeating-fields .sheet-counted + span::before,
+.sheet-counted + span::before {
+	counter-increment: sheet-rep-items;
+	content: counter(sheet-rep-items) '. ►' !important;
+	width: auto !important;
+	color:Black;
+}
+.sheet-counted:checked + span::before {
+	counter-increment: sheet-rep-items;
+content: counter(sheet-rep-items) '. ▼' !important;
+	width: auto !important;
+}
+/* inside table */
+.sheet-counted , .sheet-counted.sheet-sect-show {
+	position:absolute !important;
+	left:.5em;
+	top:.5em;
+	width:2.5em;
+	padding:0px;
+}
+
+
+.sheet-counted + span {
+	position:relative;
+	width:3em;
+	margin-left:-2em;
+}
+
+.sheet-counted + span.sheet-table-cell {
+	vertical-align:top;
+	padding-top:.25em;
+}
+
+.sheet-repeating-rollbutton {
+	width:2em;
+}
+
+.sheet-nontable-repeating .sheet-repeating-rollbutton button {
+	position:relative;
+	margin-left:0px;
+}
+
+/*highlight text */
+
+hr {
+	border-color:Black;
+	margin:5px 0;
+}
+hr.sheet-skinny {
+	border-color:DarkGrey;
+	height:1px;
+	margin:0;
+}
+
+.sheet-footer {
+	text-align: center;
+	font-size: .75rem;
+	background-color: #FFF8DC;
+	border: 1px #000 solid;
+	border-radius: 3px;
+}
+
+.repcontainer .repitem {
+    padding: 2px 4px 1px 0px;
+    margin: 1px 0 1px 0; /* originally 2px 0 4px 0 */
+    border: 1px solid black; /* originally 2px solid #CCCCCC */
+	background-color: #eee; /* new */
+    border-radius: 7px;
+	vertical-align:top;
+	overflow: hidden;
+	display: block;
+	width:100%;
+}
+.repcontainer.editmode + .repcontrol {
+	margin-bottom:3em;
+}
+.repcontainer.editmode .repitem .itemcontrol {
+	z-index:3;
+	background-color:rgba(220,220,220,0.40);
+}
+
+/* custom labels for repitem buttons */
+
+[data-groupname=repeating_weapon] > button.btn.repcontrol_add::after {
+	content: " New Weapon";
+}
+
+.repcontrol_add,
+.repcontrol_edit,
+.repcontrol_del,
+.repcontrol_move {
+	display: block;
+	background:Black;
+	color:White;
+}
+.repcontrol_move {
+	float: right;
+	margin-right: 5px;
+	width: 2.5em;
+}
+
+.sheet-options {
+	width:98% !important; /* Original Width: 98.6% */
+	padding: 2px 0 2px 5px;
+	border: 1px solid #808080;
+	border-radius: 5px;
+	background-color:Gainsboro;
+}
+
+.sheet-options.sheet-table.sheet-named {
+	border-top-left-radius:0;
+	border-top-right-radius:0;
+}
+.sheet-options.sheet-table.sheet-named .sheet-table-name  {
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+.sheet-nontable-repeating .sheet-options span {
+	margin-right:2em;
+	display:inline-block;
+}
+
+.sheet-nontable-repeating .sheet-options span input[type="checkbox"] {
+	margin-left:.5em;
+}
+
+.sheet-section-status {
+	margin-bottom:.25rem;
+}
+.sheet-status-panel {
+	width:49%;
+	display:inline-block;
+	position:relative;
+	vertical-align:top;
+	margin-bottom:0;
+}
+.sheet-status-panel .sheet-options {
+    padding-left: .25em;
+    padding-right: .25em;
+	width:auto;
+	/*min-height:1.25em;*/
+	min-height:3.5em; /* if buffs active */
+	margin-bottom:0;
+}
+
+.sheet-status-panel label b {
+	padding:0 0 0 .25em;
+}
+
+/* when a highlighted field is not showing error, put hidden 2px border so size doesn't change */
+.sheet-highlight input ,
+.sheet-highlight input:disabled,
+.sheet-highlight input.sheet-calc,
+.sheet-highlight input[readonly] {
+	border-top:2px white solid;
+	border-left:2px white solid;
+	border-right:2px white solid;
+}
+.sheet-highlight input:disabled,
+.sheet-highlight input.sheet-calc,
+.sheet-highlight input[readonly] {
+	border-bottom:2px transarent solid;
+}
+
+.sheet-warn-show:checked + input.sheet-highlight,
+.sheet-warn-show:checked + textarea.sheet-highlight,
+.sheet-warn-mshow:checked ~ input.sheet-highlight , 
+.sheet-warn-mshow:checked ~ textarea.sheet-highlight , 
+.sheet-warn-show:checked + .sheet-highlight input,
+.sheet-warn-show:checked + .sheet-highlight textarea,
+.sheet-warn-mshow:checked ~ .sheet-highlight input,
+.sheet-warn-mshow:checked ~ .sheet-highlight textarea {
+    border: 2px #B8860B dashed !important;
+}
+
+
+.sheet-error-show:checked + .sheet-highlight input,
+.sheet-error-mshow:checked  ~ .sheet-highlight input {
+	border:2px #FF0044 dotted !important;
+}
+
+.sheet-offscreen{
+	position:absolute !important;
+	clip: rect(1px, 1px, 1px, 1px);
+	overflow:hidden !important;
+}
+
+.sheet-table-group {
+	display:table-row-group;
+	width:100%;
+	overflow:hidden;
+	border-collapse:collapse;
+}
+.sheet-table-group-head  {
+	display:table-header-group;
+	width:100%;
+	overflow:hidden;
+	border-collapse:collapse;
+}
+
+.sheet-table-group-head .sheet-table-divider,
+.sheet-table-group-head .sheet-table-divider-lg{
+	vertical-align:bottom;
+}
+
+.sheet-header-row {
+	width: 100%;
+	background-color:Black;
+	color:White;
+	padding-left: 10px;
+	min-height: 1em;
+}
+
+.sheet-table-header {
+	display: table-cell;
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+	vertical-align: bottom;
+	background-color: LightGrey;
+	min-height:1.25em;
+}
+
+.charsheet .sheet-small-label2 {
+    display: inline-block;
+    /* margin: 0.3em 2px 0.5em 2px; This cannot be made !important. */
+	margin-bottom: 0.8em !important;
+    min-height: 2em;
+    vertical-align: middle !important;
+    text-align: center !important;
+    position: relative;
+}
+
+.sheet-small-label2-SplDam {
+    display: inline-block;
+	margin: .5em .4em .3em .25em; /* Originally .3em .2em .3em .25em */
+	height:3em;
+	min-height:3em;
+	vertical-align: top;
+    text-align:center;
+	position:relative;
+}
+
+.charsheet .sheet-small-label2 input[type="number"].sheet-range, /* Used to constrain short style numbers to a reasonable level */
+.charsheet .sheet-small-label2 input[type="text"].sheet-range,
+.charsheet .sheet-wrapper input.sheet-range {
+	width: 2.2em;
+	min-width: unset;
+	text-align: center;
+}
+.charsheet .sheet-small-label2 input[type="number"].sheet-weight {
+	width: 3em;
+	min-width: unset;
+	text-align: center;
+}
+.charsheet .sheet-wrapper .sheet-item input.sheet-xp {width: 5em;}
+.sheet-nontable-repeating .sheet-linked-fields {
+	vertical-align:top;
+}
+
+.charsheet .sheet-small-label2 span {
+    padding: 0em .07em 0em 0.07em !important;
+    text-align: center;
+    font-size: .85em !important;
+    font-style: italic !important;
+    font-weight: bold !important;
+    color: Black;
+    position: relative;
+    bottom: 4px;
+}
+
+.sheet-small-label2 > * {
+	max-width:100%;
+}
+
+.sheet-small-label2 > input, .sheet-small-label2 > select, .sheet-small-label2 > .sheet-calc {
+	display:block;
+	padding:.25em 2px .25em 2px;
+	vertical-align:top;
+	border: 1px solid #ccc;
+	height:1.825em; /* otherwise defaults from base.css hardcode it too tall */
+	position:relative;
+}
+.sheet-small-label2 > input.sheet-rof {
+	display: inline-block;
+}
+.sheet-small-label2  input::-moz-focus-inner {
+	padding:0px;
+}
+
+/* chrome displays checkbox height incorrectly and all the way to the left because  1.825em throws it off */
+.sheet-small-label2 > input[type="checkbox"], .sheet-small-label2 > input[type="radio"] {
+	-webkit-logical-height:initial;
+	-webkit-margin-before:.8em;
+	width:100%;
+}
+
+.sheet-hit-points-table * .sheet-table-header:last-child,
+.sheet-hit-points-table * .sheet-table-cell:last-child,
+.sheet-initiative-table * .sheet-table-header:last-child,
+.sheet-initiative-table * .sheet-table-cell:last-child {
+	padding-right:.5em;
+}
+
+/* if first row is not header */
+.sheet-table-name + .sheet-table-group .sheet-small-label2 {
+	margin-top:1.25em;
+}
+.sheet-vertical-middle {
+	vertical-align:middle;
+}
+.sheet-compendium-icon {
+	/*font-weight:bold;*/
+	font-family: Pictos;
+	font-size:18px;
+	/*vertical-align:bottom;*/
+}
+.sheet-drag-icon {
+	font-family: Pictos;
+	font-size:22px;
+	vertical-align:top;
+}
+.sheet-notes-cell,
+.sheet-table-cell.sheet-notes-cell {
+	vertical-align:top;
+}
+
+.sheet-config-table {
+	margin-bottom:1em;
+}
+.sheet-config-table  .sheet-table-cell {
+	vertical-align:top;
+	padding-left:0;
+	padding-right:.5em;
+}
+.sheet-table-cell.sheet-repeating-rollbutton {
+	vertical-align:top;
+}
+
+.sheet-divider, .sheet-divider-lg , .sheet-divider-db, .sheet-divider-db-lg {
+	text-align:center;
+	vertical-align:middle;
+}
+
+.sheet-divider, .sheet-divider-db {
+	width:.5em;
+	font-size:.85em;
+	font-weight:normal;
+}
+
+.sheet-divider-lg, .sheet-divider-db-lg {
+	width:.75em;
+	font-size:1.125em;
+	font-weight:bold;
+}
+.sheet-divider, .sheet-divider-lg {
+	display:table-cell;
+}
+.sheet-divider-db, .sheet-divider-db-lg {
+	display:inline-block;
+	margin-left:1px;
+	margin-top:1em;
+}
+.sheet-divider-db-narrow {
+	/*display:inline-block;*/
+	padding-left: 0.09em;
+	margin-left: -5px;
+	margin-right: -3px;
+	/*margin-top:1em;*/
+}
+
+.charsheet .sheet-wrapper .sheet-divider-db-lg {
+    top: 4px;
+    font-size: 1.5em !important;
+    margin-left: -0.3em;
+    margin-right: 0.10em;
+}
+.charsheet .sheet-wrapper .sheet-divider-txt {
+	position: relative;
+    font-size: 1.5em !important;
+    margin-left: -0.1em;
+    margin-right: -0.1em;
+	top: -5px;
+}
+
+.sheet-table-name, .sheet-nontable-name {
+	text-align: center;
+	font-weight: bold;
+	color:White;
+	background-color:Black;
+	width: 100%;
+}
+
+.sheet-nontable-name {/* REQUIRED! */
+	display  : block;
+}
+
+.sheet-table-name {
+	display: table-caption;
+	caption-side:top;
+}
+
+.sheet-nontable {
+	text-align:justify;
+	border-collapse:collapse;
+}
+span.sheet-tcsl-math {
+	margin: 0px -1px 0px -4px;
+    font-weight: bold;
+    font-size: 20px !important;
+    vertical-align: top;
+    white-space: nowrap;
+    position: relative;
+    top: -8px;	
+}
+
+
+/* =========================== repeating items  ================================ */
+/* == Display Manipulation Styles for the Repeating Sections == */
+
+/******* end of generic repeating items ********/
+.sheet-sect.sheet-expand .sheet-macro-text,
+.sheet-sect.sheet-expand .sheet-macro-text .sheet-small-label2 .sheet-mod-label {
+	margin-left: 0px;
+	margin-right: 10px;
+}
+.sheet-extra-damage, .sheet-sect.sheet-expand .sheet-macro-text {
+	background-color: Gainsboro;
+}
+.sheet-extra-damage .sheet-small-label2 {
+	text-align:left;
+	width:auto;
+	height:auto;
+}
+.sheet-defense-table .sheet-table-header {
+    width: 6%;
+}
+.sheet-spell-options .sheet-table-cell, .sheet-command-buttons .sheet-table-cell {
+    text-align: left;
+}
+.sheet-status-panel .sheet-options .sheet-small-label2 {
+	height:2.85em;
+	margin-bottom:-.25em;
+}
+.sheet-status-panel .sheet-options .sheet-small-label2 input {
+	position:inherit;
+}
+.sheet-panel-name {
+    font-family: tahoma,verdana,arial,sans-serif;
+    font-stretch: ultra-expanded;
+    font-weight: bold;
+    color:White;
+    font-size: 1.2em;
+}
+
+.sheet-section-state:checked ~ .sheet-background-color1 {
+	background-color: #f0f8ff;
+}
+.sheet-section-header {
+	width:100%;
+	display:table;
+	clear:both;
+}
+
+.sheet-section-header .sheet-small-label2 {
+	display:table-cell;
+	padding: 0 .25em 0 .25em;
+	vertical-align:bottom;
+}
+
+.sheet-selectable {
+	pointer-events: auto;
+	cursor: text !important;
+	background-color: transparent;
+	user-select: text !important;
+	-moz-user-select: text !important;
+	-khtml-user-select: text !important;
+	-webkit-user-select: text !important;
+	-ms-user-select: text !important;
+}
+
+/************************************    TOGGLES **************************************/
+
+.sheet-showarrow.sheet-h2arrow:not(:checked) + .sheet-showsect + .sheet-h2-section,
+.sheet-showarrow.sheet-h2arrow:not(:checked) + .sheet-showsect + .sheet-npc-hr + .sheet-h2-section,
+.sheet-showarrow.sheet-h3arrow:not(:checked) + .sheet-showsect + .sheet-h3-section {
+	display:none;
+}
+
+.sheet-textarea-gray:not(:checked) ~ .sheet-small-label2 textarea {
+	background-color: silver !important;
+	color: dimgrey !important;
+	pointer-events: none;
+}
+.sheet-textarea-gray:not(:checked) ~ .sheet-small-label2 {
+	pointer-events: none;
+}
+
+.sheet-insertmacrocell {
+	min-width:23.85%;
+	max-width:48.5%;
+	display:inline-block;
+}
+
+.sheet-insertmacrocell.sheet-col1,
+.sheet-insertmacrocell.sheet-col2,
+.sheet-insertmacrocell.sheet-col3 {
+	width:25%;
+}
+
+.sheet-insertmacrocell.sheet-col4{
+	width:20%;
+}
+
+.sheet-insertmacrocell .sheet-small-label2{
+	display:inline;
+}
+
+
+/* top of repeating section */
+.sheet-minimize-show:checked ~ .sheet-repeating-fields .sheet-expand,
+.sheet-minimize-show:checked ~ .sheet-repeating-fields .sheet-sect,
+.sheet-minimize-show:checked ~ .sheet-expand,
+.sheet-minimize-show:checked ~ .sheet-repeating-fields  .sheet-linked-fields  .sheet-macro-text-inline,
+/* repeating rows */
+.sheet-counted:not(:checked) ~ .sheet-linked-fields  .sheet-macro-text-inline,
+
+/* nextitem */
+.sheet-nextitem-show:not(:checked) + * ,
+.sheet-desc-show:not(:checked)~.sheet-desc,
+.sheet-macro-text-show:not(:checked)~.sheet-macro-text,
+.sheet-extra-damage-show:not(:checked) ~ .sheet-extra-damage,
+.sheet-misc-attack-show:not(:checked) ~ .sheet-misc-attack,
+.sheet-id-show:not(:checked) ~ .sheet-repeating-id {
+	display:none;
+}
+/* Next Item Compression */
+.sheet-nextitem-show:not(:checked) + * {
+	
+}
+
+
+
+/* ============================================================= */
+/*this shows the tab content when the appropriate input field is selected*/
+/*for now only tab 1 and 7 are used for dark heresy v1*/
+/*.charsheet input.sheet-tab1:checked~div.sheet-section-core,
+.charsheet input.sheet-tab2:checked~div.sheet-section-gear,
+.charsheet input.sheet-tab3:checked~div.sheet-section-advancements,
+.charsheet input.sheet-tab4:checked~div.sheet-section-npcsandminions,
+.charsheet input.sheet-tab5:checked~div.sheet-section-journal,
+.charsheet input.sheet-tab6:checked~div.sheet-section-vehicles,
+.charsheet input.sheet-tab7:checked~div.sheet-section-psykana,
+.charsheet input.sheet-tab8:checked~div.sheet-section-social,
+.charsheet input.sheet-tab9:checked~div.sheet-section-ship,
+.charsheet input.sheet-tab10:checked~div.sheet-section-CONFIG,
+.charsheet input.sheet-tab11:checked~div.sheet-section-DEBUG {
+	display: block;
+}*/
+/* */
+.sheet-sect-show:not(:checked)~.sheet-sect {
+	display: none;
+}
+.btn:focus {
+	border-color: red;
+}
+
+.charsheet input.sheet-tab99:checked~div[class^="sheet-section"] {
+	display: block;
+}
+
+/*Configure the tab buttons*/
+button.sheet-tab {
+    text-align: center;
+	font-size: 11px;
+	background: #c1c1c1;
+	color: #000;
+	font-weight: bold;
+	min-width: 4%;
+    height: 40px;
+    flex-grow: 1;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+	border:1px solid #000;
+	box-shadow: inset 0px 0px 10px 1px #232323;
+}
+
+.sheet-tabstoggle[value="core"] ~ button.sheet-core,
+.sheet-tabstoggle[value="gear"] ~ button.sheet-gear,
+.sheet-tabstoggle[value="advancements"] ~ button.sheet-advancement,
+.sheet-tabstoggle[value="npc"] ~ button.sheet-npc,
+.sheet-tabstoggle[value="journal"] ~ button.sheet-journal,
+.sheet-tabstoggle[value="vehicles"] ~ button.sheet-vehicles,
+.sheet-tabstoggle[value="psykana"] ~ button.sheet-psykana,
+.sheet-tabstoggle[value="social"] ~ button.sheet-social,
+.sheet-tabstoggle[value="ship"] ~ button.sheet-ships,
+.sheet-tabstoggle[value="config"] ~ button.sheet-config,
+.sheet-tabstoggle[value="debug"] ~ button.sheet-debug
+{
+    background: #3d3d3d;
+    color: #FFF;
+}
+
+.charsheet .sheet-section-core,
+.charsheet .sheet-section-gear,
+.charsheet .sheet-section-advancements,
+.charsheet .sheet-section-npc,
+.charsheet .sheet-section-journal,
+.charsheet .sheet-section-vehicles,
+.charsheet .sheet-section-psykana,
+.charsheet .sheet-section-social,
+.charsheet .sheet-section-ship,
+.charsheet .sheet-section-CONFIG,
+.charsheet .sheet-section-DEBUG {
+    display: none;
+}
+/* show the selected tab */
+.charsheet .sheet-tabstoggle[value="core"]          ~ div.sheet-section-core,
+.charsheet .sheet-tabstoggle[value="gear"]          ~ div.sheet-section-gear,
+.charsheet .sheet-tabstoggle[value="advancements"]  ~ div.sheet-section-advancements,
+.charsheet .sheet-tabstoggle[value="npc"]           ~ div.sheet-section-npc,
+.charsheet .sheet-tabstoggle[value="journal"]       ~ div.sheet-section-journal,
+.charsheet .sheet-tabstoggle[value="vehicles"]      ~ div.sheet-section-vehicles,
+.charsheet .sheet-tabstoggle[value="psykana"]       ~ div.sheet-section-psykana,
+.charsheet .sheet-tabstoggle[value="social"]        ~ div.sheet-section-social,
+.charsheet .sheet-tabstoggle[value="ship"]          ~ div.sheet-section-ship,
+.charsheet .sheet-tabstoggle[value="config"]        ~ div.sheet-section-CONFIG,
+.charsheet .sheet-tabstoggle[value="debug"]         ~ div.sheet-section-DEBUG {
+    display: block;
+}
+
+/*this hides the radio button for each tab, makes it 100px wide and 40px tall and makes sure it's above everything else*/
+/* Radio Button navigation is no longer used... */
+
+/*this modifies the span color once the radio button is selected so you know which tab is selected*/
+
+.charsheet input.sheet-tab1:checked+span.sheet-tab1,
+.charsheet input.sheet-tab2:checked+span.sheet-tab2,
+.charsheet input.sheet-tab3:checked+span.sheet-tab3,
+.charsheet input.sheet-tab4:checked+span.sheet-tab4,
+.charsheet input.sheet-tab5:checked+span.sheet-tab5,
+.charsheet input.sheet-tab6:checked+span.sheet-tab6,
+.charsheet input.sheet-tab7:checked+span.sheet-tab7,
+.charsheet input.sheet-tab8:checked+span.sheet-tab8,
+.charsheet input.sheet-tab9:checked+span.sheet-tab9,
+.charsheet input.sheet-tab10:checked+span.sheet-tab10,
+.charsheet input.sheet-tab11:checked+span.sheet-tab11,
+.charsheet input.sheet-tab12:checked+span.sheet-tab12,
+.charsheet input.sheet-tab99:checked+span.sheet-tab99,
+.charsheet input.sheet-gmroll:checked+span.sheet-gmroll {
+	background   : #6d131b;
+	color        : #eaeaea;
+	border-radius: 35px;
+}
+/* CSS Reset */
+.charsheet .sheet-wrapper div,  /* This rule is ABSOLUTELY REQUIRED! */
+.charsheet .sheet-wrapper span,
+.charsheet .sheet-wrapper label,
+.charsheet .sheet-wrapper h1,
+.charsheet .sheet-wrapper h2,
+.charsheet .sheet-wrapper h3,
+.charsheet .sheet-wrapper h4,
+.charsheet .sheet-wrapper h5,
+.charsheet .sheet-wrapper h6,
+.charsheet .sheet-wrapper p,
+.charsheet .sheet-wrapper table,
+.charsheet .sheet-wrapper caption,
+.charsheet .sheet-wrapper tbody,
+.charsheet .sheet-wrapper tfoot,
+.charsheet .sheet-wrapper thead,
+.charsheet .sheet-wrapper tr,
+.charsheet .sheet-wrapper th,
+.charsheet .sheet-wrapper td {
+	margin        : 0;
+	padding       : 0;
+	border        : 0;
+	font-size     : 100%;
+	font          : inherit;
+/*	color         : #404040; */
+	vertical-align: baseline;
+	box-sizing    : border-box;
+}
+
+.charsheet .sheet-wrapper table {
+	border-collapse: collapse;
+	border-spacing : 0;
+}
+
+.charsheet .sheet-wrapper input::-webkit-outer-spin-button,
+.charsheet .sheet-wrapper input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin            : 0;
+}
+
+.charsheet .sheet-wrapper input[type="number"] {
+	-moz-appearance: textfield;
+}
+/*
+.charsheet .sheet-wrapper textarea {
+	resize: none;
+} */
+.charsheet .sheet-wrapper textarea.sheet-1-line {
+    height: 1em;
+    padding-top: 0.4em;
+}
+
+/*default button */
+.charsheet .sheet-wrapper .sheet-default-btn {
+	width: 26px;
+	background-image: inherit;
+	font-family: "dicefontd20";
+}
+.charsheet .sheet-wrapper .sheet-atk-btn {
+	width: 26px;
+	background-image: inherit;
+	font-family: "sans-serif";
+}
+.charsheet .sheet-wrapper .sheet-default-btn:before {
+	content: "t";
+	display: inline;
+}
+.charsheet .sheet-wrapper button[type="roll"].sheet-dice:before {
+	content: "" !important;
+	display: none;
+}
+button.sheet-dice {
+	font-family: "dicefontd20" !important
+}
+/* Button Reset */
+
+.charsheet .sheet-wrapper button[type="roll"]:before {
+	content: "" !important;
+	display: none;
+}
+
+.charsheet .sheet-wrapper button[type="roll"],
+.charsheet .sheet-wrapper .sheet-btn {
+	width              : 100% !important;
+	height             : 24px;
+	vertical-align     : middle;
+	padding            : 0;
+	display            : inline-block;
+	margin             : 0;
+	font-weight        : 400;
+	text-align         : center;
+	vertical-align     : middle;
+	cursor             : pointer;
+	background-image   : none;
+	background-color   : transparent;
+	border             : 1px solid black;
+	white-space        : nowrap;
+	border-radius      : 4px;
+	-webkit-user-select: none;
+	-moz-user-select   : none;
+	-ms-user-select    : none;
+	user-select        : none;
+	box-sizing         : border-box;
+	-moz-box-sizing    : border-box;
+	-webkit-box-sizing : border-box;
+}
+
+.charsheet .sheet-wrapper button[type="roll"]:hover,
+.charsheet .sheet-wrapper .sheet-btn:hover,
+.charsheet .sheet-wrapper .sheet-hider input[type=checkbox]:checked~.sheet-btn {
+	background-color: #DAA520;
+	border-color    : black;
+}
+
+.charsheet .sheet-wrapper button[type="roll"] label,
+.charsheet .sheet-wrapper button[type="roll"] input {
+	height        : 24px;
+	line-height   : 24px;
+	font-size     : 13px;
+	vertical-align: middle;
+	text-align    : center;
+	width         : 99%;
+	cursor        : pointer;
+	background    : none;
+	box-shadow    : none;
+	transition    : none;
+	border-radius : 0;
+	border        : none;
+	font-weight   : 700;
+}
+.charsheet .sheet-wrapper button.sheet-atkroll,
+.charsheet .sheet-wrapper button.sheet-dmgroll {
+	width: 49% !important
+}
+/*
+.charsheet .sheet-wrapper button[type="roll"]:hover label,
+.charsheet .sheet-wrapper button[type="roll"]:hover input {
+	color : white;
+	border: none;
+}*/
+
+/* Main Styles */
+
+.charsheet {
+	background-image: url(http://i.imgur.com/5GbMHfg.png);
+	font-family     : Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size       : 14px;
+}
+
+.charsheet .sheet-wrapper h3 {
+	color         : black;
+	padding       : 3px;
+	margin-bottom : 5px;
+	font-size     : 18px;
+	font-weight   : bold;
+	font-family   : inherit;
+	text-transform: uppercase;
+	text-align    : center;
+}
+
+.charsheet .sheet-wrapper textarea {
+	display             : inline-block;
+	border              : 1px solid #aaa;
+	padding             : 2px;
+	height              : 24px;
+	width               : 100%;
+	font-size           : 14px;
+	font-family         : inherit;
+	line-height         : 16px;
+	font-weight         : normal;
+	margin              : 0;
+	color               : #555;
+	background-color    : white;
+	vertical-align      : middle;
+	cursor              : auto;
+	letter-spacing      : normal;
+	word-spacing        : normal;
+	text-transform      : none;
+	text-indent         : 0px;
+	text-shadow         : none;
+	text-align          : start;
+	-webkit-rtl-ordering: logical;
+	-webkit-user-select : text;
+	box-shadow          : inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	transition          : border linear .2s, box-shadow linear .2s;
+	border-radius       : 3px;
+	writing-mode        : horizontal-tb;
+	-webkit-writing-mode: horizontal-tb;
+}
+.charsheet .sheet-wrapper input,
+.charsheet .sheet-wrapper select,
+.charsheet .sheet-wrapper input[type="number"] {
+/*	display             : inline-block; */
+	border-bottom       : 1px dotted gray;
+	border-top          : none;
+	border-left         : none;
+	border-right        : none;
+	padding             : 2px;
+	height              : 24px;
+	width               : 100%;
+	font-size           : 14px;
+	font-family         : inherit;
+	line-height         : 16px;
+	font-weight         : normal;
+	margin              : 0;
+	color               : #555;
+	background-color    : transparent;
+	vertical-align      : middle;
+	cursor              : auto;
+	letter-spacing      : normal;
+	word-spacing        : normal;
+	text-transform      : none;
+	text-indent         : 0px;
+	text-shadow         : none;
+	text-align          : start;
+	-webkit-rtl-ordering: logical;
+	-webkit-user-select : text;
+	box-shadow          : inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	transition          : border linear .2s, box-shadow linear .2s;
+	border-radius       : 3px;
+	writing-mode        : horizontal-tb;
+	-webkit-writing-mode: horizontal-tb;
+}
+.charsheet .sheet-wrapper .sheet-small-label2 input,
+.charsheet .sheet-wrapper .sheet-small-label2 input[type="number"],
+.charsheet .sheet-wrapper .sheet-small-label2 input[type="text"],
+.charsheet .sheet-wrapper .sheet-small-label2 select {
+	background-color: white;
+}
+.charsheet .sheet-wrapper input:not([type='checkbox']) {
+	-webkit-appearance: textfield;
+}
+
+.charsheet .sheet-wrapper input[type="checkbox"] {
+	height: 13px;
+	width : 13px;
+	color : #555;
+	border: 1px solid #aaa;
+
+	border-radius: 0;
+
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	transition: border linear .2s, box-shadow linear .2s;
+}
+
+.charsheet .sheet-wrapper input[disabled],
+.charsheet .sheet-wrapper select[disabled],
+.charsheet .sheet-wrapper textarea[disabled],
+.charsheet .sheet-wrapper input[readonly],
+.charsheet .sheet-wrapper select[readonly],
+.charsheet .sheet-wrapper textarea[readonly] {
+	background-color: #cccccc !important;
+	border-color    : #aaa;
+	cursor          : not-allowed;
+	pointer-events  : none;
+}
+
+.charsheet .sheet-wrapper textarea {
+	width      : 98%;
+	height     : 80px;
+	line-height: 16px;
+}
+
+.charsheet .sheet-wrapper label {
+	width         : unset;
+	font-size     : 14px;
+	text-align    : left;
+	font-weight   : 600;
+	height        : 24px;
+	line-height   : 24px;
+	vertical-align: middle;
+}
+.charsheet .sheet-wrapper .sheet-3colrow .sheet-col {
+	width       : calc(40% - 9px) !important;
+	margin-right: 5px !important;
+}
+
+.charsheet .sheet-wrapper .sheet-3colrow .sheet-col:nth-child(2) {
+	width       : calc(20% - 9px) !important;
+	margin-right: 5px;
+}
+
+.charsheet .sheet-wrapper .sheet-3colrow .sheet-col:last-child {
+	margin-right: 0 !important;
+}
+
+.charsheet .sheet-wrapper .sheet-2colrow .sheet-col {
+	width       : calc(50% - 3px) !important;
+	margin-right: 2px !important;
+}
+
+.charsheet .sheet-wrapper .sheet-2colrow .sheet-col:last-child {
+	margin-right: 0 !important;
+}
+
+.charsheet .sheet-wrapper .sheet-1colrow .sheet-col {
+	width       : calc(100% - 3px) !important;
+	margin-right: 0 !important;
+}
+
+/* Table Container */
+
+.charsheet .sheet-wrapper .sheet-tablecontainer {
+	display: table;
+}
+
+.charsheet .sheet-wrapper .sheet-tablecell {
+	display: table-cell;
+}
+
+/* Special Styles */
+
+.charsheet .sheet-wrapper .sheet-skills td:first-child {
+	width        : 70%;
+	height       : 24px;
+	border-bottom: 1px solid gray;
+}
+
+.charsheet .sheet-wrapper .sheet-skills td:nth-child(n+2) {
+	width     : 24px;
+	height    : 24px;
+	border    : 1px solid gray;
+	text-align: center;
+}
+
+.charsheet .sheet-wrapper .sheet-skills button[type="roll"] {
+	width: 24px;
+}
+
+.charsheet .sheet-wrapper .sheet-skills input[type="number"],
+.charsheet .sheet-wrapper .sheet-quickborder input[type="number"] {
+	text-align: center;
+}
+
+.charsheet .sheet-wrapper .sheet-transparent {
+	background: transparent;
+	border    : transparent;
+}
+
+.charsheet .sheet-wrapper .sheet-inline {
+	display: inline-block;
+}
+
+.charsheet .sheet-wrapper .sheet-quickborder {
+	border       : 1px solid #AAAAAA;
+	padding      : 3px;
+	margin-bottom: 5px;
+}
+
+.charsheet .sheet-wrapper .sheet-uppercase {
+	text-transform: uppercase;
+}
+
+.charsheet .sheet-wrapper .sheet-uppercase label {
+	text-align: center;
+}
+
+.charsheet .sheet-wrapper .sheet-armourblock {
+	text-align: center;
+	margin    : auto auto 5px auto;
+	width     : calc(33% - 3px);
+	display   : inline-block;
+}
+
+.charsheet .sheet-wrapper .sheet-armourblock label {
+	text-align    : center;
+	text-transform: uppercase;
+}
+
+.charsheet .sheet-wrapper .sheet-armourblock input {
+	text-align: center;
+	font-size : 1.2em;
+}
+
+/* Rows and Items */
+
+
+.charsheet .sheet-wrapper .sheet-header label {
+	padding    : 0;
+	font-size  : 10px;
+	height     : 20px;
+	line-height: 20px;
+	font-weight: 700;
+}
+
+.charsheet .sheet-wrapper .sheet-item {
+	display       : inline-block;
+	width         : 100%;
+	height        : 28px;
+	vertical-align: middle;
+	margin        : 0 -2px;
+	text-align    : left;
+	padding       : 3px 2px;
+}
+
+.charsheet .sheet-wrapper .sheet-brackets {
+	border-left  : 1px solid #aaa;
+	border-right : 1px solid #aaa;
+	border-radius: 12px;
+}
+
+.charsheet .sheet-wrapper .sheet-item.sheet-center {
+	text-align: center;
+}
+
+.charsheet .sheet-wrapper .sheet-item.sheet-multiline label {
+	line-height: 12px;
+	padding-top: 1px;
+}
+
+.charsheet .sheet-wrapper .sheet-item.sheet-puny {
+	width: calc(10% - 3%);
+}
+
+.charsheet .sheet-wrapper .sheet-item.sheet-little {
+	width: calc(12% - 0.5%);
+}
+
+.charsheet .sheet-wrapper .sheet-item.sheet-tiny {
+	width: calc(15% - 2%);
+}
+
+.charsheet .sheet-wrapper .sheet-item.sheet-small {
+	width: calc(20% - 0.5%);
+}
+
+.charsheet .sheet-wrapper textarea.sheet-small {
+	height: 32px;
+}
+
+.charsheet .sheet-wrapper .sheet-item.sheet-med {
+	width: calc(30% - 0.5%);
+}
+
+.charsheet .sheet-wrapper .sheet-item.sheet-large {
+	width: calc(40% - 3%);
+}
+
+.charsheet .sheet-wrapper .sheet-item.sheet-big {
+	width: calc(50% - 11%);
+}
+
+.charsheet .sheet-wrapper .sheet-item.sheet-morebig {
+	width: calc(60% - 3%);
+}
+
+.charsheet .sheet-wrapper .sheet-item.sheet-bigger {
+	width: calc(70% - 3%);
+}
+
+.charsheet .sheet-wrapper .sheet-item.sheet-huge {
+	width: calc(80% - 3%);
+}
+
+/* Characteristics */
+/*=== Unnatural Characteristic Boxes===*/
+
+.sheet-unnatural_box {
+    position:relative;
+    width: 10em; /* Originally 99px */
+    margin-left: 5% !important;
+    /* margin-right: auto !important; removed      */
+}
+.charsheet .sheet-wrapper .sheet-unnatural {
+    position:absolute;
+    left: 94px; /* originally  59ox */
+    top: 40px;
+    z-index:1;
+    margin-bottom:0px;
+    padding-bottom:0px;
+}
+.charsheet .sheet-wrapper .sheet-unnatural[type="number"] {
+    font-size: 1em;
+    height:1.8em;
+    width:1.75em;
+	min-width:0em;
+    background: rgba(225, 225, 225, 0.66);
+    border-top-left-radius: 16px;
+}
+
+/* Old Characteristics */
+.charsheet .sheet-wrapper .sheet-characteristics button[type="roll"] label,
+.charsheet .sheet-wrapper .sheet-characteristics button[type="roll"] input {
+	height        : 25px;
+	line-height   : 25px;
+	font-size     : 16px;
+	font-weight   : bold;
+	font-family   : inherit;
+	vertical-align: center;
+	text-align    : center;
+	width         : 99%;
+	cursor        : pointer;
+	background    : none;
+	box-shadow    : none;
+	transition    : none;
+	border-radius : 0;
+	border        : none;
+}
+
+.charsheet .sheet-wrapper .sheet-characteristics button[type="roll"]:hover label,
+.charsheet .sheet-wrapper .sheet-characteristics button[type="roll"]:hover input {
+	color           : #fff;
+	border          : none;
+	background-color: #DAA520;
+	border-color    : #DAA520;
+	border-radius   : 5px;
+}
+
+.charsheet .sheet-wrapper .sheet-characteristics button[type="roll"] {
+	border          : none;
+	background-color: transparent;
+	width           : 100%;
+	margin          : auto;
+	text-align      : center;
+	font-family     : inherit;
+}
+
+.charsheet .sheet-wrapper .sheet-characteristics select {
+	display         : inline-block;
+	width           : 100%;
+	text-align      : center;
+	background-color: transparent;
+	border          : 0;
+	font-weight     : bold;
+}
+
+.charsheet .sheet-wrapper .sheet-characteristics input {
+	display         : block;
+	border          : 1px solid gray;
+	background-color: transparent;
+	width           : 70%;
+	height          : 65px;
+	margin          : auto;
+	text-align      : center;
+	font-weight     : bolder;
+	font-family     : inherit;
+	font-size       : 3em;
+}
+
+/* Footer */
+
+.charsheet .sheet-wrapper .sheet-footer {
+	display       : inline-block;
+	padding       : 5px;
+	vertical-align: super;
+	font-size     : 0.9em;
+	line-height   : 0.8em;
+	text-align    : center;
+}
+
+.charsheet .sheet-wrapper .sheet-innerfooter {
+	display: inline-block;
+	border : inherit;
+	width  : 47%;
+	padding: 2px;
+}
+
+.charsheet .sheet-wrapper .sheet-innerfooter input {
+	width     : 100%;
+	margin-top: -7px;
+}
+
+.sheet-mainleft {
+	width        : 39%;
+	float        : left;
+	padding-right: 1%;
+}
+
+.sheet-mainright {
+	width: 39%;
+	float: right;
+}
+
+.sheet-rolltemplate-customtest table {
+	width      : 100%;
+	border     : 1px solid;
+	color      : black;
+	font-size  : 1em;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.sheet-rolltemplate-customtest th {
+	background-color: rgba(112, 32, 130, 1);
+	color           : #ffffff;
+	padding         : 2px;
+	border-bottom   : 1px solid black;
+	line-height     : 1.6em;
+	font-size       : 1.2em;
+}
+
+.sheet-rolltemplate-dh1ed table {
+	width     : 100%;
+	padding   : 2px;
+	background: url(https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Dark_Heresy/img/rolltemplate_bg.png) top left repeat;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-rolltemplate-spacer {
+	max-width : 100%;
+	height    : auto;
+	max-height: 15px;
+	float     : left;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-rolltemplate-spacer.sheet-invert {
+	-webkit-transform: scaleX(-1);
+	transform        : scaleX(-1);
+	float            : right;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-tcat {
+	font-weight: bold;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-topline {
+	height: 5px;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-topline span {
+	border-top  : 2px solid black;
+	display     : block;
+	margin-left : 10px;
+	margin-right: 35px;
+}
+
+.sheet-rolltemplate-dh1ed th.sheet-title {
+	color         : black;
+	padding-left  : 5px;
+	padding-top   : 5px;
+	line-height   : 1.1em;
+	font-size     : 1.5em;
+	text-align    : left;
+	text-transform: capitalize;
+}
+
+.sheet-rolltemplate-dh1ed tr {
+	height: 20px;
+}
+
+.sheet-rolltemplate-dh1ed td {
+	padding-left: 10px;
+	font-size   : 15px;
+	color       : rgb(80, 80, 80);
+}
+
+.sheet-rolltemplate-dh1ed td:last-child {
+	float        : right;
+	padding-left : 0;
+	padding-right: 20px;
+}
+
+.sheet-rolltemplate-dh1ed tr.sheet-success th,
+.sheet-rolltemplate-dh1ed tr.sheet-failure th {
+	padding-left: 0px;
+	padding-top : 5px;
+	text-align  : center;
+	font-size   : 1.3em;
+	font-weight : bold;
+}
+
+.sheet-rolltemplate-dh1ed .inlinerollresult {
+	padding         : 0;
+	background-color: transparent;
+	border          : none;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-inlinerollresult {
+	min-width       : 1.5em;
+	text-align      : center;
+	background-color: transparent;
+	border          : none;
+	padding         : 0;
+	padding-right   : 20px;
+	font-weight     : bold;
+	font-size       : 1.1em;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-success .inlinerollresult,
+.sheet-rolltemplate-dh1ed .sheet-damage .inlinerollresult.fullcrit {
+	color      : #3FB315;
+	font-weight: bold;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-failure .inlinerollresult {
+	color      : #B31515;
+	font-weight: bold;
+}
+
+.sheet-rolltemplate-dh1ed .inlinerollresult.fullcrit,
+.sheet-rolltemplate-dh1ed .inlinerollresult.fullfail,
+.sheet-rolltemplate-dh1ed .inlinerollresult.importantroll {
+	border: none;
+}
+
+.charsheet .sheet-wrapper .sheet-rangehide{
+display            : none;
+position           : absolute;
+top                : -15px;
+background-image   : url(http://i.imgur.com/5GbMHfg.png);
+background-position: center;
+border             : 1px solid #aaa;
+box-shadow         : inset 0 1px 1px rgba(0, 0, 0, 0.075);
+border-radius      : 3px;
+padding            : 3px;
+}
+
+.charsheet .sheet-wrapper .sheet-rangehover:hover ~ .sheet-rangehide {
+	display : block;
+}
