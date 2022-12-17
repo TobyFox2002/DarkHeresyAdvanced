@@ -1,0 +1,2572 @@
+/* + ================================================================================+ */
+/* |                             Dark Heresy Style Sheet Details                     | */
+/* | FILENAME: Dark Heresy1e-variant.css                VERSION: 0.01a (pre-release) | */
+/* | AUTHOR: TobyFox2002              CONTACT: DreamFoxGamesNOSPAM@NOSPAMcomcast.net | */
+/* |                                                                  (remove NOSPAM)| */
+/* | Desc:    This file contains the style sheets for Dark Heresy.  This is not the  | */
+/* |          original version of the DH1e character sheet.                          | */
+/* + =============================================================================== | */
+
+/* This MUST BE AT THE TOP of the style sheet file. */
+.repcontainer .repitem .itemcontrol {z-index: 99999 !important;} /* Force delete button to top */
+
+/* Any color setting that uses AQUA is for debugging only as is any style that is prefaced with "DEBUG-" in all caps. */
+/* */
+/* === Core Universal styles === */
+.center {text-align: center;}
+.left {text-align: left;}
+.right {text-align: right;}
+.h2-5em {height: 2.5em !important;}
+/* ======      Dice and Symbol Fonts          == */
+.pictos      {font-family:        "Pictos" !important;}
+/* + ================================================================================== +*/
+/* |   # =  trashcan   |   & = plus symbol    |   ( = closed lock   |   ) = open lock   |*/
+/* |   + = multiply    |   + = plus btn       |   - = neg btn       |   4 = rt triangle |*/
+/* |   ? = info btn    |   D = x btn          |   _ = neg symb.     |   ` = expand      |*/
+/* |   y = cogwheel    |                      |                     |                   |*/
+/* | ================================================================================== +*/
+/* | Full list at https://wiki.roll20.net/CSS_Wizardry#Icon_Fonts                       |*/
+
+.d20font      {font-family:    "dicefont20" !important;}
+.d10font      {font-family:    "dicefont10" !important;}
+
+.inlineblock {display: inline-block !important;}
+.inline      {display: inline       !important;}
+.block       {display: inline       !important;}
+
+.noshow {display: none !important;}
+
+
+.ui-dialog .charsheet button[type=roll],
+.ui-dialog .charsheet button[type=compendium] {
+    padding: 2px 3px;
+    font-size: 1.3em;
+    margin: 0px 3px 0px 3px;
+}
+/* ==== Skills (obtained) ===== */
+.charsheet .sklabel:checked + b:not(.offCase) {
+	display: inline-block;
+	width: 13em;
+    background-color: #4a6486;
+    color: White;
+}
+.charsheet .sklabel + b:not(.offCase) {
+    display: inline-block;
+	width: 13em;
+    line-height: 1em;
+    margin: 0px 0px 0px 0px;
+    padding: 1px .5em 1px .25em;
+	text-align: center;
+	border: 1px solid black;
+}
+/* === Fake Checkboxes and Show/Hide Triggers === */
+.charsheet .boldlabel-check:checked + b:not(.offCase) {
+	display: inline-block;
+	width: 6em;
+    background-color: #4a6486;
+    color: White;
+    border-radius: 5px;
+	border: 1px solid black;
+}
+.charsheet .boldlabel-check + b:not(.offCase) {
+    display: inline-block;
+	width: 6em;
+    line-height: 1em;
+    margin: 0px 0px 0px 0px;
+    padding: 1px .5em 1px .25em;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
+}
+.charsheet .section-collapse + b {
+    display: block;
+    /* line-height: 1em; */
+    margin-top: 0.3em;
+    padding: 1px 0.5em 0px .25em;
+    text-align: center;
+	color: orange gold;
+    border: 1px solid black;
+    border-radius: .3em;
+    line-height: 12px;
+}
+.charsheet .section-rep-collapse + b {
+	display: block;
+    margin-top: -0.4em;
+    text-align: center;
+    line-height: 0px;
+    font-family: monospace;
+    font-variant: small-caps;
+    font-size: 1.4em;
+    color: brown;
+}
+.charsheet .section-rep-collapse:checked + b {}
+.charsheet .section-rep-collapse:not(:checked) + b {}
+.charsheet .section-collapse:checked + b {/* This changes the style when checkbox label is not checked. */
+/* Specifically the Font, Font Color, and Background color. */
+	color: brown; /* brown */
+	background-color: #B6B6B4;
+	padding-bottom: 0.3em;
+}
+.charsheet .section-collapse:not(:checked) + b {/* This changes the style when checkbox label is not checked. */
+/* Specifically the Font, Font Color, and Background color. */
+	color:  #FFD700; /*gold */
+	background-color: #6D7B8D; /* lightslategray */
+	padding-bottom: 0.3em;
+}
+/* === Labels === */
+.charsheet .small-label {
+    font-size: 85%!important;
+    font-style: italic;
+    font-weight: bold;
+    color: black;
+	padding-top: 1em !important;
+}
+/*----------- Tabs Setup -------------*/
+div.section-hide,
+div.character-hide,
+div.system-hide {
+    display: none;
+}
+
+input.cfg-character-toggle[value='1'] ~ div.character-hide,
+input.cfg-system-toggle[value='1'] ~ div.system-hide {
+    display: contents;
+}
+
+/*this hides the contents of each tab by default*/
+/*.charsheet div[class^="section"] {
+	display: none;
+}*/
+/* ============================================================= */
+/* Override Controls */
+body {
+	font-size: 13px !important;
+}
+/* Added in in Toby's Custom Sheet to provide support for all browsers with styled repeating sections. */
+
+
+.boldlabel-check:checked  .notready + b:not(.offCase) {
+	background-color: red;
+	color: white !important;
+}
+.charsheet .table {
+    display: table;
+    width: 100%;
+}
+.charsheet .small-label {
+    font-size: 85%!important;
+    font-style: italic;
+    font-weight: bold;
+    color: black;
+}
+
+.secondary-table-name,
+.table-name {
+    display: table-caption;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    width: 100%;
+}
+
+.secondary-table-name {
+    background-color: #4a6486 !important;
+}
+
+.th-black {
+	display: table-cell;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	background-color: black;
+}
+.table-data {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.table-data label {
+    font-size: 13px !important;
+    font-weight: normal;
+    display: block;
+    margin: 0 auto;
+    color: black;
+}
+
+.table-row {
+    display: table-row;
+    vertical-align: bottom;
+    width: 100%;    
+}
+
+.table-row-name {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+}
+
+.statlabel-sm {
+	display: table-cell;
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    font-size: 66%;
+    font-weight: bold; 
+    text-align: center;
+    padding: 0px;
+    white-space: nowrap;
+}
+.statlabel-big {
+    display: table-cell;
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold; 
+    text-align: center;
+	vertical-align: middle;
+    position: relative;
+    padding: 1em 0 0 0;
+    white-space: nowrap;
+}
+
+input[type="text"]:disabled, input[type="number"]:disabled {
+    background-color: rgba(74, 100, 134, 0.28);
+    border: 0 solid black;
+}
+input[readonly], input.calc, 
+input[type="number"].calc {
+	background-color: rgba(74, 100, 134, 0.28);
+    border: 0 solid black;
+	text-align: right;
+	padding-left:2px;
+	padding-right:0px;
+	padding-top:2px;
+	padding-bottom:2px;
+	margin-left:1px;
+	margin-right:1px;
+	margin-top:0px;
+	margin-bottom:0px;
+	border-width:0px;
+}
+
+div[class^="npc"] {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+	overflow: hidden;
+}
+
+b[title],span[title] {
+    cursor: help;
+}
+
+
+.header-row {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding-left: 10px;
+    min-height: 1em;
+    margin-bottom: 0.5em;
+}
+
+input.skills-tab1:checked + span.skills-tab1, /* Adventure Skills Tab */
+input.skills-tab2:checked + span.skills-tab2, /* Background Skills Tab*/
+input.skills-tab3:checked + span.skills-tab3, /* Consolidated Skills Tab*/
+input.skills-tab4:checked + span.skills-tab4, /* All Skill Stab */
+input.skills-tab5:checked + span.skills-tab5, /* Conditional Notes Tab*/
+input.skills-tab6:checked + span.skills-tab6, /* Configuration Tab */
+input.spells_level-tab0:checked + span.spells_level-tab0,
+input.spells_level-tab1:checked + span.spells_level-tab1,
+input.spells_level-tab2:checked + span.spells_level-tab2,
+input.spells_level-tab3:checked + span.spells_level-tab3,
+input.spells_level-tab4:checked + span.spells_level-tab4,
+input.spells_level-tab5:checked + span.spells_level-tab5,
+input.spells_level-tab6:checked + span.spells_level-tab6,
+input.spells_level-tab7:checked + span.spells_level-tab7,
+input.spells_level-tab8:checked + span.spells_level-tab8,
+input.spells_level-tab9:checked + span.spells_level-tab9,
+input.spells_level-tab99:checked + span.spells_level-tab99,
+input.spellclass-tab0:checked + span.spellclass-tab0,
+input.spellclass-tab1:checked + span.spellclass-tab1,
+input.spellclass-tab2:checked + span.spellclass-tab2,
+input.spellclass-tab3:checked + span.spellclass-tab3,
+input.spellclass-tab4:checked + span.spellclass-tab4,
+input.psiclass-tab0:checked + span.psiclass-tab0,
+input.psiclass-tab1:checked + span.psiclass-tab1 {
+    background: black;
+    color: white;
+}
+/* Maybe never used?
+.unchained-show:(:checked) + span.skills-tab1, /* Adventure Skills Tab 
+.unchained-show:(:checked) + span.skills-tab2,
+.unchained-show:(:checked) + span.skills-tab3 {
+	display: none
+} */
+/*
+.tab12 {
+    display:none !important;
+}*/
+
+.pictos {
+  font-family: "Pictos"; 
+}
+
+.text-button {
+    font-size: 100%;
+    color: white;
+	background-color: black;
+	border: 0;
+}
+
+button,
+button:hover,
+button:active
+{
+    background-image: none;
+}
+/* REMOVED
+input[type="checkbox"] + span:not(.not-show)::before
+{
+    margin-right: 4px;
+    line-height: 14px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    content: "[show]";
+    width: 14px;
+    height: 14px;
+    font-size: 12px;
+}
+
+input[type="checkbox"]:checked + span:not(.not-show)::before
+{
+    content: "[hide]";
+} */
+
+
+.no-pad-right {
+    padding-right: 0!important;
+}
+div.flex {
+	display:flex !important;
+}
+hr {
+    border-color: black;
+}
+
+.npc-hr {
+    padding: 0;
+    margin: 0;
+}
+
+.margin-bottom {
+    margin-bottom: 15px;
+}
+
+.margin-top {
+    margin-top: 15px;
+}
+
+.sect.expand .level-showlabel,
+.sect.expand .all-saves-macro-showlabel {
+    width: 11em;
+}
+.sect.expand .level-show,
+.sect.expand .iterations-show,
+.sect.expand .advmacro-text-show,
+.sect.expand .armor-attributes-show,
+.sect.expand .all-saves-macro-show {
+    width: 11em;
+    margin-right: -11em;
+}
+.sect.expand .attack-damage,
+.sect.expand .options-showlabel,
+.sect.expand .desc-showlabel,
+.sect.expand .macro-text-showlabel,
+.sect.expand .attack-damage-showlabel,
+.sect.expand .advmacro-text-showlabel,
+.sect.expand .init-notes-showlabel,
+.sect.expand .save-notes-showlabel,
+.sect.expand .extra-damage-showlabel {
+    width: 9em;
+}
+.spellrange-header {
+    width: 15%;
+}
+/* used to highlight background of sub-nav row on repeating sections */
+hr.subnav-hr {
+	width: 100%;
+	border: 12px solid #DAE4F2; /* .75rem */
+	margin-top: 24px; /* -1.45rem */
+}
+.spellrange-data {
+    width: 100% !important;
+    text-align: center !important;
+}
+
+.iterative-attack-value {
+    width:24% !important;
+}
+
+.iterative-macro {
+    width:90% !important;
+}
+
+.iterative_attack_section {
+    margin-bottom:0.5em !important;
+    margin-left: 2px !important;
+}
+
+
+/* ********************************* 3.5 Character Sheet Crossovers *************/
+textarea.skillmacro {
+	width: 100%; /* 100% / 2px  (537px 87px) */
+	height: 2em;
+	margin-bottom: 1px;
+	overflow: hidden;
+}
+.tdcs { /*Table Data Center Small*/
+    display:table-cell;
+    text-align:center;
+    font-size: 100%;
+    vertical-align: middle;
+    position: relative;
+	white-space: nowrap;
+}
+.tdcs-sub {
+    display:table-cell;
+    text-align:center;
+    line-height: 60%;
+    font-size: 100%;
+    vertical-align: middle;
+    position: relative;
+	white-space: nowrap;
+}
+.tdls { /*Table Data left Small*/
+    display:table-cell;
+    text-align:left;
+    font-size: 100%;
+    vertical-align: middle;
+    position: relative;
+	white-space: nowrap;
+}
+
+.curvedtop { /* This creates a rounded off top with a radius of 12px on the top two corners.  */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.curvedbottom { /* Same as above for the bottom corners */
+	border-bottom-left-radius: 12px;
+	border-bottom-right-radius: 12px;
+}
+/* Preset Widths */
+.onedigit {width: 1.3em !important;}   /* Creates a fixed with one digit long */
+.twodigit {width: 1.9em !important;}   /*  "   " two digits long   */
+.threedigit {width: 2.4em !important;} /*  "   " three digits long */
+.classdigit {width: 3.5em !important;} /* Used to constrain text fields num field width for class info */
+.modselect {width: 4.8em !important;} /* Used for ability mod selection boxes */
+
+.rep-damage-macro {height: 2em; overflow: hidden;}
+/* Spells, Psionics, & Special Abilities Styles */
+.tinylabel {
+	font-size: .87em;
+	line-height: 0.9em;
+	font-style: italic;
+	font-weight: bold;
+	padding-left: 0.7em;
+ }
+.compact { 
+	min-width: 0em !important;
+	height: 100% !important;
+	padding: 0em;
+}
+
+/* Repeating Section Styles, Weapon and Charged Items */
+/* Borders for spell page and class action repeating section rows */
+div[data-groupname^="repeating_lvl"] .repitem,
+/*div[data-groupname^="repeating_spellclass"] .repitem, */
+div[data-groupname^="repeating_classactions"] .repitem, 
+/*div[data-groupname^="repeating_psi"] .repitem, */
+div[data-groupname^="repeating_inv"] .repitem,
+.npc-row,
+div[class^="classaction-row"],
+.chargeditem-row {
+	border: 1px solid #000000;
+	/*width: 55.4em; */
+	border-radius: 12px;
+	margin-left: 2px;
+	margin-bottom: 5px;
+	padding: 0px;
+	background: #eee;
+}
+
+/* Sorting CODE */
+
+/* second group with wildcard is if HTML5 interferes */
+.tabinput.tab0:checked + .tab.tab0,
+.tabinput.tab1:checked + .tab.tab1,
+.tabinput.tab2:checked + .tab.tab2,
+.tabinput.tab3:checked + .tab.tab3,
+.tabinput.tab4:checked + .tab.tab4,
+.tabinput.tab5:checked + .tab.tab5,
+.tabinput.tab6:checked + .tab.tab6,
+.tabinput.tab7:checked + .tab.tab7,
+.tabinput.tab8:checked + .tab.tab8,
+.tabinput.tab9:checked + .tab.tab9,
+.tabinput.tab10:checked + .tab.tab10,
+.tabinput.tab11:checked + .tab.tab11,
+.tabinput.tab99:checked ~ .tab.tab99 {
+	background:Black;
+	color:White;
+}
+
+
+label {
+	font-size:inherit;
+	line-height:1em;
+	margin-bottom:initial;
+	/* padding-right:initial; */
+	width:initial;
+	color:initial;
+	position:relative;
+}
+select {
+	width:100%;
+	margin:initial;
+}
+
+textarea {
+	height:initial;
+	resize:initial;
+	background-color:white !important;
+	overflow-x:auto;
+	overflow-y:auto;
+	box-sizing: border-box;
+	margin-top: 0.3%;
+}
+.desc, .macro-text, .notes {
+	height:8.4em;
+	resize:vertical;
+	width:100%;
+	display:block;
+	clear:both;
+	vertical-align:top;
+}
+
+.half {
+	height:4em;
+}
+.inline-textarea,
+.skill-macro-text,
+.inline-textarea-both {
+	height:2.15em;
+	width:100%;
+	margin: 0;
+	resize:vertical;
+}
+.sk-hm-chk {
+	vertical-align: -webkit-baseline-middle !important;
+	vertical-align: middle !important;
+	margin-top: -20px;
+}
+.inline-textarea-both {
+	resize:both;
+}
+.skill-macro-text {
+	height:1.85em;
+}
+.extra-damage .small-label2 textarea {
+	resize:both;
+}
+
+.cheat {
+	width:100%;
+	display:block;
+	clear:both;
+}
+
+h2,h3,h4,h5,h6,
+.table-name,
+.table-header,
+.text-button,
+.tab {
+	font-family: Arial, sans-serif;
+	font-size: 13px; /*BUGGED */
+}
+
+.table-cell span[title],  .table-header[title], .small-label2 span[title] {
+	cursor: help;
+}
+
+.table {
+	display     : table;
+	width       : 100%;
+}
+
+/* make error row more visible (colorblind users could not see slightly darker border )
+also need 1 more level in selector or base css will override border */
+
+.error {
+	color:Red;
+	font-size: 14px; /* .825rem */
+	background-color:White;
+	margin-left:.25em;
+}
+
+.repitem:not(.repitembroken) .error {
+	display:none;
+}
+.small-label {
+	font-size: .85em;
+	font-style: italic;
+	font-weight: bold;
+	color:Black;
+}
+
+.secondary-table-name {
+	display: table-caption;
+	text-align: center;
+	font-weight: bold;
+	color:White;
+	background-color: #4a6486;
+	width: 100%;
+}
+
+.table-cell {
+	display: table-cell;
+	vertical-align: middle;
+	text-align:center;
+	padding-left:.125em;
+	padding-right:.125em;
+	padding-bottom:.125em;
+}
+.tcsl {
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: .125em;
+	padding-right: .125em;
+	padding-bottom: .125em;
+	font-size: 85%!important;
+	font-style: italic;
+	font-weight: bold;
+	color: black;
+	text-align: center;
+	
+}
+
+.tcsl input {
+	font-style: normal;	
+}
+
+.total-row { 
+	display: table-row;
+	vertical-align: bottom;
+	height: 32px; /* 2rem */
+	width:100%;
+	overflow:hidden;
+	border-collapse:collapse;
+}
+/**/
+
+.select-small {
+	font-size: 12px; /* .765rem; BUGGED */
+	height: 2em;
+	padding: 0;
+	min-width: 3.5em;
+	width: 100%;
+}
+/*.table-cell > select:not(.select-small) {	height:1.9em;} */
+.small-label2 > select.select-small {
+	height:2em;
+}
+
+/* color for disabled/calc */
+.calc, input.calc, input:disabled {
+	background-color:#4A6486;
+	background-color: rgba(74, 100, 134, 0.28);
+	border-width: 0px;
+	color: #222;
+	padding-left:.25em;
+	min-width:2.85em;
+}
+
+input.calc {
+	border-bottom-color:transparent;
+	border-bottom-width:0px;
+}
+
+/* CHROME: hide spinner area at right when readonly or when not hovering over a number */
+/*
+input[readonly]::-webkit-inner-spin-button ,
+input.calc::-webkit-inner-spin-button ,
+input.disabled::-webkit-inner-spin-button,
+input[type="number"]:not(:hover)::-webkit-inner-spin-button  {
+    -webkit-appearance: none;
+    margin-right:0px;
+    padding-right:.25em;
+}
+*/
+/* FIREFOX: hide spinner for all disabled/calc */
+input.calc[type="number"]:hover,
+input.calc[type="number"]:focus,
+input[type="number"].calc,
+input[type="number"]:disabled {
+	-webkit-appearance: none;
+	-moz-appearance: textfield !important;
+	-moz-padding-end:.5em !important;
+	padding-inline-end: .5em;
+}
+
+
+.text-button, button.text-button  {
+	font-size: 16px; /* 1.05rem; */
+	color:White;
+	background-color:Black;
+	border: 0;
+	width:90%;
+	padding:.125em .125em .125em .25em;
+	font-weight:normal;
+}
+
+span.text-button  {
+	padding-left:1.8em;
+}
+
+/******************************* API COMMAND BUTTONS *************************************/
+.command-button {
+	background-color:#ce0f69;
+	color:#FFFFFF;
+}
+
+button[type=roll].command-button::before {
+	content: "";
+}
+/************************************* BUFFS ******************************************/
+.option-header {
+    border-top:1px solid black !important;
+    background-color: lightgrey;
+}
+
+.linked-fields {
+	display:inline-block;
+	margin-left:0px;
+	margin-right:0px;
+	width:auto;
+}
+
+
+.maxhealbutton + span::before,
+.newbuff-button + span::before,
+.newtemplate-button + span::before {
+    content: '✚'; /*'⛨☤';*/
+ /*   vertical-align:top;	
+    padding: 3px 2px 1px 1px;*/
+	width:1.6em;
+	height:1.6em;
+}
+
+
+/*********************************************** */
+.cssbutton-label {
+    margin-left: -3em;
+    font-weight: bold;
+    font-size: 11px; /*.666rem; */
+    font-style: italic;
+    vertical-align: bottom;
+    cursor: help;
+}
+.small-label2 .cssbutton-label {
+    margin-left:-.25em;
+}
+
+
+/* if all pressed show all */
+.tabs.custbordernav ~ .tabinput.tab99:checked ~ .repeating-fields .custrepeating-border {
+	display:block !important;
+}
+
+.hiderepborder .table-repeating .counted {
+    top: 1.5em;
+}
+.hiderepborder .repcontainer .repitem {
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 2px;
+}
+.hiderepborder .repcontainer .repitem .custrepeating-border {
+	padding: 2px;
+	margin: 1px 0 0 0;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+/* custom tab overrides */
+
+
+/************************************* BUFFS ******************************************/
+.inline-textarea {
+    height: 2.15em;
+    min-height: 2.15em;
+    width: calc(100% - 4px);
+    margin: 0;
+    resize: vertical;
+}
+
+.super::after  {
+    margin-left: .25em;
+    font-size: 11px; /* 1rem; */
+	vertical-align: super;
+    font-weight: normal;
+    color: black;
+}
+.note-a::after {content: '(a)';}
+.note-b::after {content: '(b)';}
+.note-c::after {content: '(c)';}
+.note-d::after {content: '(d)';}
+
+.deletebutton {
+    margin: 0 -1.4rem 2px 2rem;
+}
+.deletebutton + span::before {
+	font-family: "Pictos" !important;
+	content: '#';
+	padding-left: 2px;
+	padding-top: 0px;
+	vertical-align: top;
+}
+
+/***************** collapse/expand rows arrow added after text found preceding span ******************************/
+.split-column-show:not(:checked)  ~ .repeating-fields .repitem {
+	clear:both;
+}
+
+.split-column-show:checked  ~ .repeating-fields .repitem {
+	width:50%;
+	display:inline-block;
+}
+.split-column-show:checked  ~ .repeating-fields .repitem:nth-child(odd),
+.split-column-show:checked  ~ .repeating-fields .repitem:first-child(odd){
+	float:left;
+}
+.split-column-show:checked  ~ .repeating-fields .repitem:nth-child(even){
+	float:right;
+}
+
+/* Config Page Toggles */
+
+
+.charsheet .nextitem-show:not(:checked) + * {display: none;}
+
+/* standalone toggles */
+.minimize-show:checked ~ .repeating-fields .linked-fields .macro-text-inline,
+/* repeating rows */
+.counted:not(:checked) ~ .linked-fields .macro-text-inline,
+.sect-show.sect-show-inverse, .sect-show .noshow
+.misc-show:not(.showarrow), .spontaneous-show,
+.nextitem-show,.tabcopy, .error-show, .warn-show, .error-mshow, .warn-mshow {
+	display:none !important;
+}
+
+/* By Default HIDE all wClass specific fields */
+.charsheet .select,
+.charsheet .basic,
+.charsheet .heavy,
+.charsheet .melee,
+.charsheet .pistol,
+.charsheet .thrown {
+    display: none !important;
+}
+.charsheet .wClass-toggle[value="select"]    ~ .select,
+.charsheet .wClass-toggle[value="basic"]     ~ .basic,
+.charsheet .wClass-toggle[value="heavy"]     ~ .heavy,
+.charsheet .wClass-toggle[value="melee"]     ~ .melee,
+.charsheet .wClass-toggle[value="Pistol"]    ~ .pistol,
+.charsheet .wClass-toggle[value="Thrown"]    ~ .thrown {
+    display: inline-block !important;
+}
+
+.charsheet .wClass-toggle[value="select"]  ~ .hide-ranged,
+.charsheet .wClass-toggle[value="basic"]     ~ .hide-melee,
+.charsheet .wClass-toggle[value="heavy"]     ~ .hide-melee,
+.charsheet .wClass-toggle[value="melee"]     ~ .hide-ranged,
+.charsheet .wClass-toggle[value="Pistol"]    ~ .hide-melee,
+.charsheet .wClass-toggle[value="Thrown"]    ~ .hide-melee {
+    display: none !important;
+}
+
+
+/* Rate of Fire */
+/* top: -4px, */
+.charsheet .RoFGroup {
+	top: -4px;
+	margin: 0 0.5em 0 0.5em !important;
+}
+.charsheet .RoFGroup > input {
+	height: 26px !important;
+}
+.charsheet .ClipGroup {
+	top: -4px;
+	margin: 0 0.5em 0 0.5em !important;
+}
+.charsheet .ClipGroup > input {
+	height: 26px !important;
+}
+.charsheet .RangeGroup {
+	top: -4px;
+	margin: 0 0.5em 0 0.5em !important;
+}
+.charsheet .RangeGroup > input {
+	height: 26px !important;
+}
+
+.charsheet .wrapper textarea.repnotes {
+	width: 100%; height: 1.7em; line-height: 1.2em;
+}
+
+.charsheet .wrapper label.repname {width: 30em}
+.charsheet .split-column-show:checked ~ .repeating-fields label.repname {
+	width: 10em;
+}
+/* .charsheet .wrapper label.damtype {width: ~~} ~ Inherited */
+.charsheet .split-column-show:checked ~ .repeating-fields label.damtype {
+	width: 3em;
+}
+.charsheet .wrapper div.weap-notes {width: 38%}
+.charsheet .split-column-show:checked ~ .repeating-fields div.weap-notes {
+	width: 66%;
+}
+
+/* ARROWS */
+.cssbutton,  /* REQUIRED: "Nav Button" Checkboxes */
+.showarrow,
+.refreshbutton,
+.split-column-show,
+.lock-show,
+.counted {
+	opacity      : 0;
+	position     : relative;
+	top          : 0;
+	left         : 0;
+	cursor       : pointer;
+	z-index      : 5;
+}
+.cssbutton,
+.refreshbutton,
+.addarmorbutton,
+.configbutton,
+.addshieldbutton,
+.createmacrobutton,
+.createattackbutton {
+    margin-right: 15px; /* -1.5rem */
+}
+.lock-show,
+.split-column-show,
+.readonly-show,
+.createattackbutton {
+    margin: 0 -14px 2px 0; /*0 -1.4rem 2px 0 */
+}
+.createattackbutton + span::before {
+    content: '⚔';
+    margin-top: 5px;
+    vertical-align:top;	
+    padding: 3px 0 0 0 !important;
+}
+.small-label2 .createattackbutton + span::before {
+    padding: 4px;
+    margin-top: 2px;
+}
+
+input.cssbutton, input.showarrow,
+input.refreshbutton, input.split-column-show, input.lock-show , input.counted {
+	height: 1.6em;
+}
+h2 label {
+	color:inherit !important;
+}
+
+.showarrow + .showsect::before{
+	margin-right:.25em;
+}
+
+.counted  + span::before,
+.showarrow + .showsect::before {
+	display: inline-block;
+	content: '►';
+	width: 1em;
+	height: 1em;
+	font-size: 1em;
+	color:DarkGrey;
+}
+
+.counted:checked + span::before,
+.showarrow:checked + .showsect::before {
+	content: '▼';
+}
+
+
+.showsect,  label.tab, .clickheader  {
+	position:relative;
+}
+.showsect, h3.clickheader, h2.clickheader {
+	display:inline-block;
+	margin-left:-.25em;
+}
+
+.skills  .showsect, .skill-minishow {
+	width:12em;
+	color:#333;
+	padding:0px 1px 0px 1px;
+}
+.charsheet .skills .showarrow {
+	width:12em;
+	margin-right:-12em;
+}
+
+.charsheet .sect.expand .options-showlabel,
+.charsheet .sect.expand .desc-showlabel,
+.charsheet .sect.expand .save-showlabel,
+.charsheet .sect.expand .misc-showlabel,
+.charsheet .sect.expand .macro-text-showlabel,
+.charsheet .sect.expand .augments-showlabel,
+.charsheet .sect.expand .extra-damage-showlabel,
+.charsheet .sect.expand .ESCond-showlabel,
+.charsheet .sect.expand .DCMod-showlabel,
+.charsheet .sect.expand .ESCfg-showlabel,
+.charsheet .sect.expand .misc-attack-showlabel {
+	width:8em;
+}
+.sect.expand .options-show,
+.sect.expand .desc-show,
+.sect.expand .save-show,
+.sect.expand .misc-show,
+.sect.expand .macro-text-show,
+.sect.expand .augments-show,
+.sect.expand .extra-damage-show,
+.sect.expand .ESCond-show,
+.sect.expand .DCMod-show,
+.sect.expand .ESCfg-show,
+.sect.expand .misc-attack-show {
+	width:8em;
+	margin-right:-8em;
+}
+.sect.expand .iterations-showlabel {
+	width:10em;
+}
+.sect.expand .iterations-show {
+	width:10em;
+	margin-right:-10em;
+}
+
+
+.sect.expand .id-show {
+	width:4em;
+	margin-right:-4em;
+}
+.split-column-show:not(:checked) ~ .repeating-fields .sect.expand .showarrow:first-child  {
+	margin-left:.125em;
+}
+.sect.expand .showsect {
+	margin-right:1em;
+}
+.repitem .sect.expand {
+	display:block;
+	clear:both;
+	width:100%;
+}
+
+.innerlabel,
+.innerlabel.showarrow {
+	position:absolute !important;
+	opacity:0;
+	width:100%;
+	height:100%;
+	z-index:99;
+	margin:0;
+	padding:0;
+}
+.progress-icon {
+	position:absolute;
+	z-index: 5;
+    top: 4em;
+    color: red;
+    background-color: white;
+}
+.progress-show:not(:checked) ~ .progress-icon {
+	display: none;
+}
+/* generic css buttons borders and colors only */
+.cssbutton {
+	width: 1.4rem !important;
+}
+.lock-show, .split-column-show, .minimize-show  {
+	margin: 0px -20px 2px 5px !important; /* -1.4rem/.33rem */
+}
+
+.refreshbutton,
+.cssbutton {
+	margin-right: -16px; /* -1.5rem */
+}
+
+.charsheet .cssbutton + span::before {
+    display: inline-block;
+    font-size: 16px; /* 1rem */
+	margin:2px;
+	padding:0px 2px 0px 2px;
+	font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #808080;
+	background-color: #FFFFFF;
+	color:Black;
+	text-align:center;
+	font-style:normal !important;
+	width: 24px !important;  /* 1.4 rem */
+	height: 24px !important; /* 1.4 rem */
+	box-sizing: border-box;
+}
+
+.charsheet .minimize-show:checked ~ .lock-show + span::before,
+.charsheet .cssbutton:checked + span::before {
+	background-color: #4a6486;
+	color: #DDDDDD;
+}
+.lock-show + span::before {
+	font-family: "Pictos" !important;
+	content: '(';
+}
+.minimize-show:checked ~ .lock-show + span::before,
+.lock-show:checked + span::before {
+	font-family: "Pictos" !important;
+	content: ')';
+}
+.minimize-show  + span::before {
+	font-family: "Pictos" !important;
+	content: '_';
+}
+.minimize-show:checked + span::before {
+	font-family: Arial, Sans-serif !important;
+	content: '☐';
+}
+.split-column-show + span::before {
+	content:'☷';
+}
+.split-column-show:checked + span::before {
+	content:'☰';
+}
+.refreshbutton + span::before {
+	font-family: "Pictos" !important;
+	content:'1';
+	margin-top:5px;
+}
+.small-label2 .refreshbutton + span::before {
+	padding:4px;
+	margin-left:20%;
+	margin-top:2px;
+}
+.small-label2 input[type="checkbox"].refreshbutton {
+	-webkit-margin-before:0px;
+	display:inline-block;
+}
+
+.showarrow:hover + .showsect,
+.showarrow:hover + .showsect::before,
+.counted:hover + span,
+.counted:hover + span::before,
+.cssbutton:hover ,
+.cssbutton:hover + span::before {
+	color:Red;
+	border-color:Red;
+}
+
+.charsheet .split-column-show:checked ~ .repeating-fields .limit {
+	display: none;
+}
+
+/***********************repeating item counter ************************************/
+.repeating-fields {
+	counter-reset: rep-items -1;
+}
+/* do not allow user to click when minimized */
+.minimize-show:checked ~ .lock-show,
+.minimize-show:checked ~ .repeating-fields .counted ,
+.lock-show:checked ~ .repeating-fields .counted,
+.lock-show:checked ~ .repeating-fields .showsect {
+	pointer-events: none;
+	display: none;
+}
+.minimize-show:checked ~ .repeating-fields .counted:checked + span::before,
+.minimize-show:checked ~ .repeating-fields .counted + span::before,
+.counted + span::before {
+	counter-increment: rep-items;
+	content: counter(rep-items) '. ►' !important;
+	width: auto !important;
+	color:Black;
+}
+.counted:checked + span::before {
+	counter-increment: rep-items;
+	content: counter(rep-items) '. ▼' !important;
+	width: auto !important;
+}
+/* inside table */
+.counted , .counted.sect-show {
+	position:absolute !important;
+	left:.5em;
+	top:.5em;
+	width:2.5em;
+	padding:0px;
+}
+
+
+.counted + span {
+	position:relative;
+	width:3em;
+	margin-left:-2em;
+}
+
+.counted + span.table-cell {
+	vertical-align:top;
+	padding-top:.25em;
+}
+
+.repeating-rollbutton {
+	width:2em;
+}
+
+.nontable-repeating .repeating-rollbutton button {
+	position:relative;
+	margin-left:0px;
+}
+
+/*highlight text */
+
+hr {
+	border-color:Black;
+	margin:5px 0;
+}
+hr.skinny {
+	border-color:DarkGrey;
+	height:1px;
+	margin:0;
+}
+
+.footer {
+	text-align: center;
+	font-size: .75rem;
+	background-color: #FFF8DC;
+	border: 1px #000 solid;
+	border-radius: 3px;
+}
+
+.repcontainer .repitem {
+    padding: 2px 4px 1px 0px;
+    margin: 1px 0 1px 0; /* originally 2px 0 4px 0 */
+    border: 1px solid black; /* originally 2px solid #CCCCCC */
+	background-color: #eee; /* new */
+    border-radius: 7px;
+	vertical-align:top;
+	overflow: hidden;
+	display: block;
+	width:100%;
+}
+.repcontainer.editmode + .repcontrol {
+	margin-bottom:3em;
+}
+.repcontainer.editmode .repitem .itemcontrol {
+	z-index:3;
+	background-color:rgba(220,220,220,0.40);
+}
+
+/* custom labels for repitem buttons */
+
+[data-groupname=repeating_weapon] > button.btn.repcontrol_add::after {
+	content: " New Weapon";
+}
+
+.repcontrol_add,
+.repcontrol_edit,
+.repcontrol_del,
+.repcontrol_move {
+	display: block;
+	background:Black;
+	color:White;
+}
+.repcontrol_move {
+	float: right;
+	margin-right: 5px;
+	width: 2.5em;
+}
+
+.options {
+	width:98% !important; /* Original Width: 98.6% */
+	padding: 2px 0 2px 5px;
+	border: 1px solid #808080;
+	border-radius: 5px;
+	background-color:Gainsboro;
+}
+
+.options.table.named {
+	border-top-left-radius:0;
+	border-top-right-radius:0;
+}
+.options.table.named .table-name  {
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+.nontable-repeating .options span {
+	margin-right:2em;
+	display:inline-block;
+}
+
+.nontable-repeating .options span input[type="checkbox"] {
+	margin-left:.5em;
+}
+
+.section-status {
+	margin-bottom:.25rem;
+}
+.status-panel {
+	width:49%;
+	display:inline-block;
+	position:relative;
+	vertical-align:top;
+	margin-bottom:0;
+}
+.status-panel .options {
+    padding-left: .25em;
+    padding-right: .25em;
+	width:auto;
+	/*min-height:1.25em;*/
+	min-height:3.5em; /* if buffs active */
+	margin-bottom:0;
+}
+
+.status-panel label b {
+	padding:0 0 0 .25em;
+}
+
+/* when a highlighted field is not showing error, put hidden 2px border so size doesn't change */
+.highlight input ,
+.highlight input:disabled,
+.highlight input.calc,
+.highlight input[readonly] {
+	border-top:2px white solid;
+	border-left:2px white solid;
+	border-right:2px white solid;
+}
+.highlight input:disabled,
+.highlight input.calc,
+.highlight input[readonly] {
+	border-bottom:2px transarent solid;
+}
+
+.warn-show:checked + input.highlight,
+.warn-show:checked + textarea.highlight,
+.warn-mshow:checked ~ input.highlight , 
+.warn-mshow:checked ~ textarea.highlight , 
+.warn-show:checked + .highlight input,
+.warn-show:checked + .highlight textarea,
+.warn-mshow:checked ~ .highlight input,
+.warn-mshow:checked ~ .highlight textarea {
+    border: 2px #B8860B dashed !important;
+}
+
+
+.error-show:checked + .highlight input,
+.error-mshow:checked  ~ .highlight input {
+	border:2px #FF0044 dotted !important;
+}
+
+.offscreen{
+	position:absolute !important;
+	clip: rect(1px, 1px, 1px, 1px);
+	overflow:hidden !important;
+}
+
+.table-group {
+	display:table-row-group;
+	width:100%;
+	overflow:hidden;
+	border-collapse:collapse;
+}
+.table-group-head  {
+	display:table-header-group;
+	width:100%;
+	overflow:hidden;
+	border-collapse:collapse;
+}
+
+.table-group-head .table-divider,
+.table-group-head .table-divider-lg{
+	vertical-align:bottom;
+}
+
+.header-row {
+	width: 100%;
+	background-color:Black;
+	color:White;
+	padding-left: 10px;
+	min-height: 1em;
+}
+
+.table-header {
+	display: table-cell;
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+	vertical-align: bottom;
+	background-color: LightGrey;
+	min-height:1.25em;
+}
+
+.charsheet .small-label2 {
+    display: inline-block;
+    /* margin: 0.3em 2px 0.5em 2px; This cannot be made !important. */
+	margin-bottom: 0.8em !important;
+    min-height: 2em;
+    vertical-align: middle !important;
+    text-align: center !important;
+    position: relative;
+}
+
+.small-label2-SplDam {
+    display: inline-block;
+	margin: .5em .4em .3em .25em; /* Originally .3em .2em .3em .25em */
+	height:3em;
+	min-height:3em;
+	vertical-align: top;
+    text-align:center;
+	position:relative;
+}
+
+.charsheet .small-label2 input[type="number"].range, /* Used to constrain short style numbers to a reasonable level */
+.charsheet .small-label2 input[type="text"].range,
+.charsheet .wrapper input.range {
+	width: 2.2em;
+	min-width: unset;
+	text-align: center;
+}
+.charsheet .small-label2 input[type="number"].weight {
+	width: 3em;
+	min-width: unset;
+	text-align: center;
+}
+.charsheet .wrapper .item input.xp {width: 5em;}
+.nontable-repeating .linked-fields {
+	vertical-align:top;
+}
+
+.charsheet .small-label2 span {
+    padding: 0em .07em 0em 0.07em !important;
+    text-align: center;
+    font-size: .85em !important;
+    font-style: italic !important;
+    font-weight: bold !important;
+    color: Black;
+    position: relative;
+    bottom: 4px;
+}
+
+.small-label2 > * {
+	max-width:100%;
+}
+
+.small-label2 > input, .small-label2 > select, .small-label2 > .calc {
+	display:block;
+	padding:.25em 2px .25em 2px;
+	vertical-align:top;
+	border: 1px solid #ccc;
+	height:1.825em; /* otherwise defaults from base.css hardcode it too tall */
+	position:relative;
+}
+.small-label2 > input.rof {
+	display: inline-block;
+}
+.small-label2  input::-moz-focus-inner {
+	padding:0px;
+}
+
+/* chrome displays checkbox height incorrectly and all the way to the left because  1.825em throws it off */
+.small-label2 > input[type="checkbox"], .small-label2 > input[type="radio"] {
+	-webkit-logical-height:initial;
+	-webkit-margin-before:.8em;
+	width:100%;
+}
+
+.hit-points-table * .table-header:last-child,
+.hit-points-table * .table-cell:last-child,
+.initiative-table * .table-header:last-child,
+.initiative-table * .table-cell:last-child {
+	padding-right:.5em;
+}
+
+/* if first row is not header */
+.table-name + .table-group .small-label2 {
+	margin-top:1.25em;
+}
+.vertical-middle {
+	vertical-align:middle;
+}
+.compendium-icon {
+	/*font-weight:bold;*/
+	font-family: Pictos;
+	font-size:18px;
+	/*vertical-align:bottom;*/
+}
+.drag-icon {
+	font-family: Pictos;
+	font-size:22px;
+	vertical-align:top;
+}
+.notes-cell,
+.table-cell.notes-cell {
+	vertical-align:top;
+}
+
+.config-table {
+	margin-bottom:1em;
+}
+.config-table  .table-cell {
+	vertical-align:top;
+	padding-left:0;
+	padding-right:.5em;
+}
+.table-cell.repeating-rollbutton {
+	vertical-align:top;
+}
+
+.divider, .divider-lg , .divider-db, .divider-db-lg {
+	text-align:center;
+	vertical-align:middle;
+}
+
+.divider, .divider-db {
+	width:.5em;
+	font-size:.85em;
+	font-weight:normal;
+}
+
+.divider-lg, .divider-db-lg {
+	width:.75em;
+	font-size:1.125em;
+	font-weight:bold;
+}
+.divider, .divider-lg {
+	display:table-cell;
+}
+.divider-db, .divider-db-lg {
+	display:inline-block;
+	margin-left:1px;
+	margin-top:1em;
+}
+.divider-db-narrow {
+	/*display:inline-block;*/
+	padding-left: 0.09em;
+	margin-left: -5px;
+	margin-right: -3px;
+	/*margin-top:1em;*/
+}
+
+.charsheet .wrapper .divider-db-lg {
+    top: 4px;
+    font-size: 1.5em !important;
+    margin-left: -0.3em;
+    margin-right: 0.10em;
+}
+.charsheet .wrapper .divider-txt {
+	position: relative;
+    font-size: 1.5em !important;
+    margin-left: -0.1em;
+    margin-right: -0.1em;
+	top: -5px;
+}
+
+.table-name, .nontable-name {
+	text-align: center;
+	font-weight: bold;
+	color:White;
+	background-color:Black;
+	width: 100%;
+}
+
+.nontable-name {/* REQUIRED! */
+	display  : block;
+}
+
+.table-name {
+	display: table-caption;
+	caption-side:top;
+}
+
+.nontable {
+	text-align:justify;
+	border-collapse:collapse;
+}
+span.tcsl-math {
+	margin: 0px -1px 0px -4px;
+    font-weight: bold;
+    font-size: 20px !important;
+    vertical-align: top;
+    white-space: nowrap;
+    position: relative;
+    top: -8px;	
+}
+
+
+/* =========================== repeating items  ================================ */
+/* == Display Manipulation Styles for the Repeating Sections == */
+
+/******* end of generic repeating items ********/
+.sect.expand .macro-text,
+.sect.expand .macro-text .small-label2 .mod-label {
+	margin-left: 0px;
+	margin-right: 10px;
+}
+.extra-damage, .sect.expand .macro-text {
+	background-color: Gainsboro;
+}
+.extra-damage .small-label2 {
+	text-align:left;
+	width:auto;
+	height:auto;
+}
+.defense-table .table-header {
+    width: 6%;
+}
+.spell-options .table-cell, .command-buttons .table-cell {
+    text-align: left;
+}
+.status-panel .options .small-label2 {
+	height:2.85em;
+	margin-bottom:-.25em;
+}
+.status-panel .options .small-label2 input {
+	position:inherit;
+}
+.panel-name {
+    font-family: tahoma,verdana,arial,sans-serif;
+    font-stretch: ultra-expanded;
+    font-weight: bold;
+    color:White;
+    font-size: 1.2em;
+}
+
+.section-state:checked ~ .background-color1 {
+	background-color: #f0f8ff;
+}
+.section-header {
+	width:100%;
+	display:table;
+	clear:both;
+}
+
+.section-header .small-label2 {
+	display:table-cell;
+	padding: 0 .25em 0 .25em;
+	vertical-align:bottom;
+}
+
+.selectable {
+	pointer-events: auto;
+	cursor: text !important;
+	background-color: transparent;
+	user-select: text !important;
+	-moz-user-select: text !important;
+	-khtml-user-select: text !important;
+	-webkit-user-select: text !important;
+	-ms-user-select: text !important;
+}
+
+/************************************    TOGGLES **************************************/
+
+.showarrow.h2arrow:not(:checked) + .showsect + .h2-section,
+.showarrow.h2arrow:not(:checked) + .showsect + .npc-hr + .h2-section,
+.showarrow.h3arrow:not(:checked) + .showsect + .h3-section {
+	display:none;
+}
+
+.textarea-gray:not(:checked) ~ .small-label2 textarea {
+	background-color: silver !important;
+	color: dimgrey !important;
+	pointer-events: none;
+}
+.textarea-gray:not(:checked) ~ .small-label2 {
+	pointer-events: none;
+}
+
+.insertmacrocell {
+	min-width:23.85%;
+	max-width:48.5%;
+	display:inline-block;
+}
+
+.insertmacrocell.col1,
+.insertmacrocell.col2,
+.insertmacrocell.col3 {
+	width:25%;
+}
+
+.insertmacrocell.col4{
+	width:20%;
+}
+
+.insertmacrocell .small-label2{
+	display:inline;
+}
+
+
+/* top of repeating section */
+.minimize-show:checked ~ .repeating-fields .expand,
+.minimize-show:checked ~ .repeating-fields .sect,
+.minimize-show:checked ~ .expand,
+.minimize-show:checked ~ .repeating-fields  .linked-fields  .macro-text-inline,
+/* repeating rows */
+.counted:not(:checked) ~ .linked-fields  .macro-text-inline,
+
+/* nextitem */
+.nextitem-show:not(:checked) + * ,
+.desc-show:not(:checked)~.desc,
+.macro-text-show:not(:checked)~.macro-text,
+.extra-damage-show:not(:checked) ~ .extra-damage,
+.misc-attack-show:not(:checked) ~ .misc-attack,
+.id-show:not(:checked) ~ .repeating-id {
+	display:none;
+}
+/* Next Item Compression */
+.nextitem-show:not(:checked) + * {
+	
+}
+
+
+
+/* ============================================================= */
+/*this shows the tab content when the appropriate input field is selected*/
+/*for now only tab 1 and 7 are used for dark heresy v1*/
+/*.charsheet input.tab1:checked~div.section-core,
+.charsheet input.tab2:checked~div.section-gear,
+.charsheet input.tab3:checked~div.section-advancements,
+.charsheet input.tab4:checked~div.section-npcsandminions,
+.charsheet input.tab5:checked~div.section-journal,
+.charsheet input.tab6:checked~div.section-vehicles,
+.charsheet input.tab7:checked~div.section-psykana,
+.charsheet input.tab8:checked~div.section-social,
+.charsheet input.tab9:checked~div.section-ship,
+.charsheet input.tab10:checked~div.section-CONFIG,
+.charsheet input.tab11:checked~div.section-DEBUG {
+	display: block;
+}*/
+/* */
+.sect-show:not(:checked)~.sect {
+	display: none;
+}
+.btn:focus {
+	border-color: red;
+}
+
+.charsheet input.tab99:checked~div[class^="section"] {
+	display: block;
+}
+
+/*Configure the tab buttons*/
+button.tab {
+    text-align: center;
+	font-size: 11px;
+	background: #c1c1c1;
+	color: #000;
+	font-weight: bold;
+	min-width: 4%;
+    height: 40px;
+    flex-grow: 1;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+	border:1px solid #000;
+	box-shadow: inset 0px 0px 10px 1px #232323;
+}
+
+.tabstoggle[value="core"] ~ button.core,
+.tabstoggle[value="gear"] ~ button.gear,
+.tabstoggle[value="advancements"] ~ button.advancement,
+.tabstoggle[value="npc"] ~ button.npc,
+.tabstoggle[value="journal"] ~ button.journal,
+.tabstoggle[value="vehicles"] ~ button.vehicles,
+.tabstoggle[value="psykana"] ~ button.psykana,
+.tabstoggle[value="social"] ~ button.social,
+.tabstoggle[value="ship"] ~ button.ships,
+.tabstoggle[value="config"] ~ button.config,
+.tabstoggle[value="debug"] ~ button.debug,
+/* Configuration Tab*/
+.tabstoggle[value="character"] ~ button.cfg-character
+{
+    background: #3d3d3d;
+    color: #FFF;
+}
+
+.charsheet .section-core,
+.charsheet .section-gear,
+.charsheet .section-advancements,
+.charsheet .section-npc,
+.charsheet .section-journal,
+.charsheet .section-vehicles,
+.charsheet .section-psykana,
+.charsheet .section-social,
+.charsheet .section-ship,
+.charsheet .section-CONFIG,
+.charsheet .section-DEBUG,
+/* Configuration Tab*/
+.charsheet .cfg-character {
+    display: none;
+}
+/* show the selected tab */
+.charsheet .tabstoggle[value="core"]          ~ div.section-core,
+.charsheet .tabstoggle[value="gear"]          ~ div.section-gear,
+.charsheet .tabstoggle[value="advancements"]  ~ div.section-advancements,
+.charsheet .tabstoggle[value="npc"]           ~ div.section-npc,
+.charsheet .tabstoggle[value="journal"]       ~ div.section-journal,
+.charsheet .tabstoggle[value="vehicles"]      ~ div.section-vehicles,
+.charsheet .tabstoggle[value="psykana"]       ~ div.section-psykana,
+.charsheet .tabstoggle[value="social"]        ~ div.section-social,
+.charsheet .tabstoggle[value="ship"]          ~ div.section-ship,
+.charsheet .tabstoggle[value="config"]        ~ div.section-CONFIG,
+.charsheet .tabstoggle[value="debug"]         ~ div.section-DEBUG,
+/* Configuration Tab*/
+.charsheet .tabstoggle[value="character"]     ~ div.cfg-character {
+    display: block;
+}
+
+/*this hides the radio button for each tab, makes it 100px wide and 40px tall and makes sure it's above everything else*/
+/* Radio Button navigation is no longer used... */
+
+/*this modifies the span color once the radio button is selected so you know which tab is selected*/
+
+.charsheet input.tab1:checked+span.tab1,
+.charsheet input.tab2:checked+span.tab2,
+.charsheet input.tab3:checked+span.tab3,
+.charsheet input.tab4:checked+span.tab4,
+.charsheet input.tab5:checked+span.tab5,
+.charsheet input.tab6:checked+span.tab6,
+.charsheet input.tab7:checked+span.tab7,
+.charsheet input.tab8:checked+span.tab8,
+.charsheet input.tab9:checked+span.tab9,
+.charsheet input.tab10:checked+span.tab10,
+.charsheet input.tab11:checked+span.tab11,
+.charsheet input.tab12:checked+span.tab12,
+.charsheet input.tab99:checked+span.tab99,
+.charsheet input.gmroll:checked+span.gmroll {
+	background   : #6d131b;
+	color        : #eaeaea;
+	border-radius: 35px;
+}
+/* CSS Reset */
+.charsheet .wrapper div,  /* This rule is ABSOLUTELY REQUIRED! */
+.charsheet .wrapper span,
+.charsheet .wrapper label,
+.charsheet .wrapper h1,
+.charsheet .wrapper h2,
+.charsheet .wrapper h3,
+.charsheet .wrapper h4,
+.charsheet .wrapper h5,
+.charsheet .wrapper h6,
+.charsheet .wrapper p,
+.charsheet .wrapper table,
+.charsheet .wrapper caption,
+.charsheet .wrapper tbody,
+.charsheet .wrapper tfoot,
+.charsheet .wrapper thead,
+.charsheet .wrapper tr,
+.charsheet .wrapper th,
+.charsheet .wrapper td {
+	margin        : 0;
+	padding       : 0;
+	border        : 0;
+	font-size     : 100%;
+	font          : inherit;
+/*	color         : #404040; */
+	vertical-align: baseline;
+	box-sizing    : border-box;
+}
+
+.charsheet .wrapper table {
+	border-collapse: collapse;
+	border-spacing : 0;
+}
+
+.charsheet .wrapper input::-webkit-outer-spin-button,
+.charsheet .wrapper input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin            : 0;
+}
+
+.charsheet .wrapper input[type="number"] {
+	-moz-appearance: textfield;
+}
+/*
+.charsheet .wrapper textarea {
+	resize: none;
+} */
+.charsheet .wrapper textarea.1-line {
+    height: 1em;
+    padding-top: 0.4em;
+}
+
+/*default button */
+.charsheet .wrapper .default-btn {
+	width: 26px;
+	background-image: inherit;
+	font-family: "dicefontd20";
+}
+.charsheet .wrapper .atk-btn {
+	width: 26px;
+	background-image: inherit;
+	font-family: "sans-serif";
+}
+.charsheet .wrapper .default-btn:before {
+	content: "t";
+	display: inline;
+}
+.charsheet .wrapper button[type="roll"].dice:before {
+	content: "" !important;
+	display: none;
+}
+button.dice {
+	font-family: "dicefontd20" !important
+}
+/* Button Reset */
+
+.charsheet .wrapper button[type="roll"]:before {
+	content: "" !important;
+	display: none;
+}
+
+.charsheet .wrapper button[type="roll"],
+.charsheet .wrapper .btn {
+	width              : 100% !important;
+	height             : 24px;
+	vertical-align     : middle;
+	padding            : 0;
+	display            : inline-block;
+	margin             : 0;
+	font-weight        : 400;
+	text-align         : center;
+	vertical-align     : middle;
+	cursor             : pointer;
+	background-image   : none;
+	background-color   : transparent;
+	border             : 1px solid black;
+	white-space        : nowrap;
+	border-radius      : 4px;
+	-webkit-user-select: none;
+	-moz-user-select   : none;
+	-ms-user-select    : none;
+	user-select        : none;
+	box-sizing         : border-box;
+	-moz-box-sizing    : border-box;
+	-webkit-box-sizing : border-box;
+}
+
+.charsheet .wrapper button[type="roll"]:hover,
+.charsheet .wrapper .btn:hover,
+.charsheet .wrapper .hider input[type=checkbox]:checked~.btn {
+	background-color: #DAA520;
+	border-color    : black;
+}
+
+.charsheet .wrapper button[type="roll"] label,
+.charsheet .wrapper button[type="roll"] input {
+	height        : 24px;
+	line-height   : 24px;
+	font-size     : 13px;
+	vertical-align: middle;
+	text-align    : center;
+	width         : 99%;
+	cursor        : pointer;
+	background    : none;
+	box-shadow    : none;
+	transition    : none;
+	border-radius : 0;
+	border        : none;
+	font-weight   : 700;
+}
+.charsheet .wrapper button.atkroll,
+.charsheet .wrapper button.dmgroll {
+	width: 49% !important
+}
+/*
+.charsheet .wrapper button[type="roll"]:hover label,
+.charsheet .wrapper button[type="roll"]:hover input {
+	color : white;
+	border: none;
+}*/
+
+/* Main Styles */
+
+.charsheet {
+	background-image: url(http://i.imgur.com/5GbMHfg.png);
+	font-family     : Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size       : 14px;
+}
+
+.charsheet .wrapper h3 {
+	color         : black;
+	padding       : 3px;
+	margin-bottom : 5px;
+	font-size     : 18px;
+	font-weight   : bold;
+	font-family   : inherit;
+	text-transform: uppercase;
+	text-align    : center;
+}
+
+.charsheet .wrapper textarea {
+	display             : inline-block;
+	border              : 1px solid #aaa;
+	padding             : 2px;
+	height              : 24px;
+	width               : 100%;
+	font-size           : 14px;
+	font-family         : inherit;
+	line-height         : 16px;
+	font-weight         : normal;
+	margin              : 0;
+	color               : #555;
+	background-color    : white;
+	vertical-align      : middle;
+	cursor              : auto;
+	letter-spacing      : normal;
+	word-spacing        : normal;
+	text-transform      : none;
+	text-indent         : 0px;
+	text-shadow         : none;
+	text-align          : start;
+	-webkit-rtl-ordering: logical;
+	-webkit-user-select : text;
+	box-shadow          : inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	transition          : border linear .2s, box-shadow linear .2s;
+	border-radius       : 3px;
+	writing-mode        : horizontal-tb;
+	-webkit-writing-mode: horizontal-tb;
+}
+.charsheet .wrapper input,
+.charsheet .wrapper select,
+.charsheet .wrapper input[type="number"] {
+/*	display             : inline-block; */
+	border-bottom       : 1px dotted gray;
+	border-top          : none;
+	border-left         : none;
+	border-right        : none;
+	padding             : 2px;
+	height              : 24px;
+	width               : 100%;
+	font-size           : 14px;
+	font-family         : inherit;
+	line-height         : 16px;
+	font-weight         : normal;
+	margin              : 0;
+	color               : #555;
+	background-color    : transparent;
+	vertical-align      : middle;
+	cursor              : auto;
+	letter-spacing      : normal;
+	word-spacing        : normal;
+	text-transform      : none;
+	text-indent         : 0px;
+	text-shadow         : none;
+	text-align          : start;
+	-webkit-rtl-ordering: logical;
+	-webkit-user-select : text;
+	box-shadow          : inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	transition          : border linear .2s, box-shadow linear .2s;
+	border-radius       : 3px;
+	writing-mode        : horizontal-tb;
+	-webkit-writing-mode: horizontal-tb;
+}
+.charsheet .wrapper .small-label2 input,
+.charsheet .wrapper .small-label2 input[type="number"],
+.charsheet .wrapper .small-label2 input[type="text"],
+.charsheet .wrapper .small-label2 select {
+	background-color: white;
+}
+.charsheet .wrapper input:not([type='checkbox']) {
+	-webkit-appearance: textfield;
+}
+
+.charsheet .wrapper input[type="checkbox"] {
+	height: 13px;
+	width : 13px;
+	color : #555;
+	border: 1px solid #aaa;
+
+	border-radius: 0;
+
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	transition: border linear .2s, box-shadow linear .2s;
+}
+
+.charsheet .wrapper input[disabled],
+.charsheet .wrapper select[disabled],
+.charsheet .wrapper textarea[disabled],
+.charsheet .wrapper input[readonly],
+.charsheet .wrapper select[readonly],
+.charsheet .wrapper textarea[readonly] {
+	background-color: #cccccc !important;
+	border-color    : #aaa;
+	cursor          : not-allowed;
+	pointer-events  : none;
+}
+
+.charsheet .wrapper textarea {
+	width      : 98%;
+	height     : 80px;
+	line-height: 16px;
+}
+
+.charsheet .wrapper label {
+	width         : unset;
+	font-size     : 14px;
+	text-align    : left;
+	font-weight   : 600;
+	height        : 24px;
+	line-height   : 24px;
+	vertical-align: middle;
+}
+.charsheet .3colrow .col {
+	width       : calc(40% - 9px) !important;
+	margin-right: 5px !important;
+}
+
+.charsheet .3colrow .col:nth-child(2) {
+	width       : calc(20% - 9px) !important;
+	margin-right: 5px;
+}
+
+.charsheet .3colrow .col:last-child {
+	margin-right: 0 !important;
+}
+
+.charsheet .2colrow .col {
+	width       : calc(50% - 3px) !important;
+	margin-right: 2px !important;
+}
+
+.charsheet .2colrow .col:last-child {
+	margin-right: 0 !important;
+}
+
+.charsheet .1colrow .col {
+	width       : calc(100% - 3px) !important;
+	margin-right: 0 !important;
+}
+
+/* Table Container */
+
+.charsheet .wrapper .tablecontainer {
+	display: table;
+}
+
+.charsheet .wrapper .tablecell {
+	display: table-cell;
+}
+
+/* Special Styles */
+
+.charsheet .wrapper .skills td:first-child {
+	width        : 70%;
+	height       : 24px;
+	border-bottom: 1px solid gray;
+}
+
+.charsheet .wrapper .skills td:nth-child(n+2) {
+	width     : 24px;
+	height    : 24px;
+	border    : 1px solid gray;
+	text-align: center;
+}
+
+.charsheet .wrapper .skills button[type="roll"] {
+	width: 24px;
+}
+
+.charsheet .wrapper .skills input[type="number"],
+.charsheet .wrapper .quickborder input[type="number"] {
+	text-align: center;
+}
+
+.charsheet .wrapper .transparent {
+	background: transparent;
+	border    : transparent;
+}
+
+.charsheet .wrapper .inline {
+	display: inline-block;
+}
+
+.charsheet .wrapper .quickborder {
+	border       : 1px solid #AAAAAA;
+	padding      : 3px;
+	margin-bottom: 5px;
+}
+
+.charsheet .wrapper .uppercase {
+	text-transform: uppercase;
+}
+
+.charsheet .wrapper .uppercase label {
+	text-align: center;
+}
+
+.charsheet .wrapper .armourblock {
+	text-align: center;
+	margin    : auto auto 5px auto;
+	width     : calc(33% - 3px);
+	display   : inline-block;
+}
+
+.charsheet .wrapper .armourblock label {
+	text-align    : center;
+	text-transform: uppercase;
+}
+
+.charsheet .wrapper .armourblock input {
+	text-align: center;
+	font-size : 1.2em;
+}
+
+/* Rows and Items */
+
+
+.charsheet .wrapper .header label {
+	padding    : 0;
+	font-size  : 10px;
+	height     : 20px;
+	line-height: 20px;
+	font-weight: 700;
+}
+
+.charsheet .wrapper .item {
+	display       : inline-block;
+	width         : 100%;
+	height        : 28px;
+	vertical-align: middle;
+	margin        : 0 -2px;
+	text-align    : left;
+	padding       : 3px 2px;
+}
+
+.charsheet .wrapper .brackets {
+	border-left  : 1px solid #aaa;
+	border-right : 1px solid #aaa;
+	border-radius: 12px;
+}
+
+.charsheet .wrapper .item.center {
+	text-align: center;
+}
+
+.charsheet .wrapper .item.multiline label {
+	line-height: 12px;
+	padding-top: 1px;
+}
+
+.charsheet .wrapper .item.puny {
+	width: calc(10% - 3%);
+}
+
+.charsheet .wrapper .item.little {
+	width: calc(12% - 0.5%);
+}
+
+.charsheet .wrapper .item.tiny {
+	width: calc(15% - 2%);
+}
+
+.charsheet .wrapper .item.small {
+	width: calc(20% - 0.5%);
+}
+
+.charsheet .wrapper textarea.small {
+	height: 32px;
+}
+
+.charsheet .wrapper .item.med {
+	width: calc(30% - 0.5%);
+}
+
+.charsheet .wrapper .item.large {
+	width: calc(40% - 3%);
+}
+
+.charsheet .wrapper .item.big {
+	width: calc(50% - 11%);
+}
+
+.charsheet .wrapper .item.morebig {
+	width: calc(60% - 3%);
+}
+
+.charsheet .wrapper .item.bigger {
+	width: calc(70% - 3%);
+}
+
+.charsheet .wrapper .item.huge {
+	width: calc(80% - 3%);
+}
+
+/* Characteristics */
+/*=== Unnatural Characteristic Boxes===*/
+
+.unnatural_box {
+    position:relative;
+    width: 10em; /* Originally 99px */
+    margin-left: 5% !important;
+    /* margin-right: auto !important; removed      */
+}
+.charsheet .wrapper .unnatural {
+    position:absolute;
+    left: 94px; /* originally  59ox */
+    top: 40px;
+    z-index:1;
+    margin-bottom:0px;
+    padding-bottom:0px;
+}
+.charsheet .wrapper .unnatural[type="number"] {
+    font-size: 1em;
+    height:1.8em;
+    width:1.75em;
+	min-width:0em;
+    background: rgba(225, 225, 225, 0.66);
+    border-top-left-radius: 16px;
+}
+
+/* Old Characteristics */
+.charsheet .wrapper .characteristics button[type="roll"] label,
+.charsheet .wrapper .characteristics button[type="roll"] input {
+	height        : 25px;
+	line-height   : 25px;
+	font-size     : 16px;
+	font-weight   : bold;
+	font-family   : inherit;
+	vertical-align: center;
+	text-align    : center;
+	width         : 99%;
+	cursor        : pointer;
+	background    : none;
+	box-shadow    : none;
+	transition    : none;
+	border-radius : 0;
+	border        : none;
+}
+
+.charsheet .wrapper .characteristics button[type="roll"]:hover label,
+.charsheet .wrapper .characteristics button[type="roll"]:hover input {
+	color           : #fff;
+	border          : none;
+	background-color: #DAA520;
+	border-color    : #DAA520;
+	border-radius   : 5px;
+}
+
+.charsheet .wrapper .characteristics button[type="roll"] {
+	border          : none;
+	background-color: transparent;
+	width           : 100%;
+	margin          : auto;
+	text-align      : center;
+	font-family     : inherit;
+}
+
+.charsheet .wrapper .characteristics select {
+	display         : inline-block;
+	width           : 100%;
+	text-align      : center;
+	background-color: transparent;
+	border          : 0;
+	font-weight     : bold;
+}
+
+.charsheet .wrapper .characteristics input {
+	display         : block;
+	border          : 1px solid gray;
+	background-color: transparent;
+	width           : 70%;
+	height          : 65px;
+	margin          : auto;
+	text-align      : center;
+	font-weight     : bolder;
+	font-family     : inherit;
+	font-size       : 3em;
+}
+
+/* Footer */
+
+.charsheet .wrapper .footer {
+	display       : inline-block;
+	padding       : 5px;
+	vertical-align: super;
+	font-size     : 0.9em;
+	line-height   : 0.8em;
+	text-align    : center;
+}
+
+.charsheet .wrapper .innerfooter {
+	display: inline-block;
+	border : inherit;
+	width  : 47%;
+	padding: 2px;
+}
+
+.charsheet .wrapper .innerfooter input {
+	width     : 100%;
+	margin-top: -7px;
+}
+
+.mainleft {
+	width        : 39%;
+	float        : left;
+	padding-right: 1%;
+}
+
+.mainright {
+	width: 39%;
+	float: right;
+}
+
+.sheet-rolltemplate-customtest table {
+	width      : 100%;
+	border     : 1px solid;
+	color      : black;
+	font-size  : 1em;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.sheet-rolltemplate-customtest th {
+	background-color: rgba(112, 32, 130, 1);
+	color           : #ffffff;
+	padding         : 2px;
+	border-bottom   : 1px solid black;
+	line-height     : 1.6em;
+	font-size       : 1.2em;
+}
+
+.sheet-rolltemplate-dh1ed table {
+	width     : 100%;
+	padding   : 2px;
+	background: url(https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Dark_Heresy/img/rolltemplate_bg.png) top left repeat;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-rolltemplate-spacer {
+	max-width : 100%;
+	height    : auto;
+	max-height: 15px;
+	float     : left;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-rolltemplate-spacer.sheet-invert {
+	-webkit-transform: scaleX(-1);
+	transform        : scaleX(-1);
+	float            : right;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-tcat {
+	font-weight: bold;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-topline {
+	height: 5px;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-topline span {
+	border-top  : 2px solid black;
+	display     : block;
+	margin-left : 10px;
+	margin-right: 35px;
+}
+
+.sheet-rolltemplate-dh1ed th.sheet-title {
+	color         : black;
+	padding-left  : 5px;
+	padding-top   : 5px;
+	line-height   : 1.1em;
+	font-size     : 1.5em;
+	text-align    : left;
+	text-transform: capitalize;
+}
+
+.sheet-rolltemplate-dh1ed tr {
+	height: 20px;
+}
+
+.sheet-rolltemplate-dh1ed td {
+	padding-left: 10px;
+	font-size   : 15px;
+	color       : rgb(80, 80, 80);
+}
+
+.sheet-rolltemplate-dh1ed td:last-child {
+	float        : right;
+	padding-left : 0;
+	padding-right: 20px;
+}
+
+.sheet-rolltemplate-dh1ed tr.sheet-success th,
+.sheet-rolltemplate-dh1ed tr.sheet-failure th {
+	padding-left: 0px;
+	padding-top : 5px;
+	text-align  : center;
+	font-size   : 1.3em;
+	font-weight : bold;
+}
+
+.sheet-rolltemplate-dh1ed .inlinerollresult {
+	padding         : 0;
+	background-color: transparent;
+	border          : none;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-inlinerollresult {
+	min-width       : 1.5em;
+	text-align      : center;
+	background-color: transparent;
+	border          : none;
+	padding         : 0;
+	padding-right   : 20px;
+	font-weight     : bold;
+	font-size       : 1.1em;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-success .inlinerollresult,
+.sheet-rolltemplate-dh1ed .sheet-damage .inlinerollresult.fullcrit {
+	color      : #3FB315;
+	font-weight: bold;
+}
+
+.sheet-rolltemplate-dh1ed .sheet-failure .inlinerollresult {
+	color      : #B31515;
+	font-weight: bold;
+}
+
+.sheet-rolltemplate-dh1ed .inlinerollresult.fullcrit,
+.sheet-rolltemplate-dh1ed .inlinerollresult.fullfail,
+.sheet-rolltemplate-dh1ed .inlinerollresult.importantroll {
+	border: none;
+}
+
+.charsheet .wrapper .rangehide{
+display            : none;
+position           : absolute;
+top                : -15px;
+background-image   : url(http://i.imgur.com/5GbMHfg.png);
+background-position: center;
+border             : 1px solid #aaa;
+box-shadow         : inset 0 1px 1px rgba(0, 0, 0, 0.075);
+border-radius      : 3px;
+padding            : 3px;
+}
+
+.charsheet .wrapper .rangehover:hover ~ .rangehide {
+	display : block;
+}
