@@ -11,7 +11,7 @@
 <!-- + ================================================================================ | -->
 
 <!-- Logo Header -->
-<div class="1colrow col" style="margin-bottom:-30px; padding-right:3%; width:58%;">
+<div class="I-colrow col" style="margin-bottom:-30px; padding-right:3%; width:58%;">
     <img src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Dark_Heresy/img/logo.png"
         style="max-height: 100px; margin-left:21%;">
 </div>
@@ -39,7 +39,7 @@
     <div class="wrapper">
 
         <!-- Base Character Information -->
-        <div class="1colrow col">
+        <div class="I-colrow col">
 
             <div class="row">
                 <div class="item" style="width:14%"><label data-i18n="charactername">Character Name</label></div>
@@ -88,7 +88,7 @@
                 <div class="item" style="width:12%"><input name="attr_Eyes" type="text"></div>
             </div>
         </div>
-		<div class="1colrow col">
+		<div class="I-colrow col">
 			<div class="sect">
 				<span class="tdcs small-label" style=""><input  type="text" name="attr_gender" title="(@{gender})  Used for text-based games." data-i18n="gender" style="width: 6em;"><br data-i18n="gender">Gender</span>
 				<span class="tdcs small-label" style="width:8%;"><input  type="text" name="attr_subjpronoun" title="(@{subjpronoun})  Subjective Pronoun [Self] (He, She, it) ect.  HE/SHE/IT attacked with a longsword." data-i18n-title="subj-pronoun-title" style="width: 6em;"><br data-i18n="subj-pronoun">Subj. Pronoun</span>
@@ -104,7 +104,7 @@
 
         <!-- Main Sheet First Tier -->
 
-        <div class="3colrow">
+        <div class="III-colrow">
 
             <!-- Left Column -->
 
@@ -1692,7 +1692,7 @@
 	--=revRoll|[&revStr]
 
 }}">
-                    <table>
+                    <table class="reptable-bg">
                         <tr>
                             <td>
                                 <div class="row">
@@ -1743,7 +1743,16 @@
 
                 <h3 data-i18n="talents">Talents</h3>
                 <fieldset class="repeating_talents">
-                    <input name="attr_reptalent" type="text">
+					<div class="nontable-repeating">
+						<div class="small-label2 taltext" style="width:60%;">
+							<textarea name="attr_reptalent" class="repnotes" title="@{repeating_talents_$X_reptalent}" placeholder="Talent Name"></textarea>
+							<span data-i18n="talent-name">Talent</span>
+						</div>
+						<label class="small-label2" style="width:35%; top: 1px;">
+							<input type="text" name="attr_talentsrc" title="@{repeating_talents_$X_talentsrc} Book and Page" placeholder="Core p. 120"/>
+							<span data-i18n="source-abbr">Src.</span>
+						</label>
+					</div>
                 </fieldset>
 
             </div>
@@ -2693,7 +2702,7 @@
                     </tr>
                 </table>
                 <fieldset class="repeating_advancedskills">
-                    <table>
+                    <table class="reptable-bg">
                         <tr>
                             <td>
                                 <div class="row">
@@ -2853,21 +2862,23 @@
                                 value="@{abilityroll} &{template:dh1ed} {{rollname=@{reppsychicdiscipline}}} {{psy=[[((?{Psy Rating|1}d10cs9cf11)+[[floor(@{wp-base}/10)]]+?{Modifier|0})]]}}"><label>Psy</label></button>
                         </div>
                     </div>
-                </fieldset><!-- Minor Powers -->
-                <fieldset class="repeating_minorpsychicpowers">
+                </fieldset>
+				<!-- Minor Powers -->
+				<fieldset class="repeating_minorpsychicpowers">
                     <div class="row">
-                        <div class="item large">
-                            <label data-i18n="minorpower">Minor Power</label>
+                        <div class="item tight">
+                            <input name="attr_repminorpsychicpower" type="text" style="text-align: right;">
                         </div>
-                        <div class="item morebig brackets">
-                            <input name="attr_repminorpsychicpower" type="text">
+                        <div class="item tight brackets">
+                            <input name="attr_minorpowerpage" type="text" style="text-align: center;">
                         </div>
-                        <div class="item puny">
+						<div class="item tight">
                             <button name="roll_repminorpower" type="roll"
                                 value="@{abilityroll} &{template:dh1ed} {{rollname=@{repminorpsychicpower}}} {{threshold=[[?{Threshold|7}]]}} {{psy=[[((?{Psy Rating|1}d10cs9cf11)+[[floor(@{wp-base}/10)]]+?{Modifier|0})]]}}"><label>Psy</label></button>
                         </div>
                     </div>
-                </fieldset><!-- Discipline Powers -->
+                </fieldset>
+				<!-- Discipline Powers -->
                 <fieldset class="repeating_disciplinepsychicpowers">
                     <div class="row">
                         <div class="item large">
@@ -2886,12 +2897,23 @@
                 <!-- Mutations anyone? -->
 
                 <h3 data-i18n="mutations">Mutations</h3>
-                <textarea name="attr_mutations" style="width:95%; margin:auto; height:75px;">
-        </textarea>
+                <textarea name="attr_mutations" class="usrInput" style="width:95%; margin:auto; height:75px;"></textarea>
 
                 <h3 data-i18n="traits">Traits</h3>
                 <fieldset class="repeating_talents2">
                     <input name="attr_reptalent2" type="text">
+                </fieldset>
+				<fieldset class="repeating_traits">
+					<div class="nontable-repeating">
+						<div class="small-label2 taltext" style="width:60%;">
+							<textarea name="attr_reptalent" class="repnotes" title="@{repeating_talents_$X_reptrait}" placeholder="Trait Name"></textarea>
+							<span data-i18n="talent-name">Traits</span>
+						</div>
+						<label class="small-label2" style="width:35%; top: 1px;">
+							<input type="text" name="attr_traitsrc" title="@{repeating_talents_$X_talentsrc} Book and Page" placeholder="Core p. 120"/>
+							<span data-i18n="source-abbr">Src.</span>
+						</label>
+					</div>
                 </fieldset>
             </div>
         </div>
@@ -2900,7 +2922,7 @@
         <!-- Page 2 -->
 
 
-        <div class="2colrow">
+        <div class="II-colrow">
 
             <div class="col">
                 <!-- Initiative -->
@@ -2992,7 +3014,7 @@
                 <br>
 				<div class="quickborder">
 					<h3>Movement</h3>
-					<div class="item" style="width: 20%"><label>Unnatural ?: </label></div>
+					<div class="item" style="width: 22%"><label>Unnatural ?: </label></div>
 					<div class="item" style="width: 25%">
 						<select class="sizeselect" name="attr_spd-mod">
 							<option value="@{agi-final}">Normal</option>
@@ -3020,7 +3042,7 @@
 					</div>
 					<br>
 					<h3>Armor &amp; Defense</h3>
-					<div class="2colrow">
+					<div class="II-colrow">
 						<!--<div class="col" style="background-image: url('https://imgsrv.roll20.net/?src=https://i.imgur.com/8uIryAk.png')"> -->
 						<div class="col">
 							<div class="armourblock">&nbsp;</div>
@@ -3103,21 +3125,25 @@
 					</div>
 					<h3>Size</h3>
 					<div class="item" style="width: 45%">
-						<select class="sizeselect" name="attr_Size">
-							<option value="0">Average (4)</option>
-							<option value="-3">Miniscule (1)</option>
-							<option value="-2">Puny (2)</option>
-							<option value="-1">Weedy (3)</option>
-							<option value="1">Hulking (5)</option>
-							<option value="2">Enormous (6)</option>
-							<option value="3">Massive (7)</option>
-							<option value="4">Immense (8)</option>
-							<option value="5">Monumental (9)</option>
-							<option value="6">Titanic (10)</option>
+						<select class="sizeselect" name="attr_size">
+							<option value="6" >Titanic    </option>
+							<option value="5" >Monumental </option>
+							<option value="4" >Immense    </option>
+							<option value="3" >Massive    </option>
+							<option value="2" >Enormous   </option>
+							<option value="1" >Hulking    </option>
+							<option value="0" >● Average ●</option>
+							<option value="-1">Scrawny    </option>
+							<option value="-2">Puny       </option>
+							<option value="-3">Miniscule  </option>
 						</select>
 					</div>
+					<div class="item" style="width: 10%"><label>Mod: </label></div>
+					<div class="item" style="width: 10%"><input name="attr_size_mod" type="number" value="" title="Size Modifier" style="text-align: center" readonly /></div>
+					<div class="item" style="width: 15%"><label>Stealth: </label></div>
+					<div class="item" style="width: 10%"><input name="attr_size_conceal" type="number" value="" title="Stealth Modifier" style="text-align: center" readonly /></div>
 				</div>
-
+				<!-- 'size_mod': sizeMod, 'size_conceal': ConcealMod, 'size_label': sizeLabel   -->
 			</div>
             <!-- Right Side -->
 
@@ -3159,7 +3185,6 @@
 
 <span class="nontable-name" data-i18n="attacks">Attacks</span>
 <div class="table">
-	<span class="table-name">Preset Attack Buttons</span>
 	<div class="table-row">
 		<span class="table-header">0</span><span class="table-header">1</span><span class="table-header">2</span>
 		<span class="table-header">3</span><span class="table-header">4</span><span class="table-header">5</span>
@@ -3203,29 +3228,30 @@
 	<div class="table-row">
 		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$0_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$0_wDmgRoll}">t</button></span>
 		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$1_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$1_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$2_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$3_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$3_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$4_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$4_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$5_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$5_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$6_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$6_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$7_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$7_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$8_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$8_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$9_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$9_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$10_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$10_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$11_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$11_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$12_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$12_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$13_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$13_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$14_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$14_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$15_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$15_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$16_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$16_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$17_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$17_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$18_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$18_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$19_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$19_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$20_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$20_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$21_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$21_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$22_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$22_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$23_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$23_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$24_wDmgRoll}">t</button></span>
-		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$24_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$25_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$2_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$2_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$3_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$3_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$4_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$4_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$5_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$5_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$6_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$6_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$7_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$7_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$8_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$8_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$9_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$9_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$10_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$10_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$11_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$11_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$12_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$12_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$13_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$13_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$14_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$14_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$15_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$15_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$16_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$16_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$17_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$17_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$18_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$18_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$19_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$19_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$20_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$20_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$21_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$21_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$22_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$22_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$23_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$23_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$24_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$24_wDmgRoll}">t</button></span>
+		<span class="tdcs"><button type="roll" name="roll_repeating_" title="@{selected|repeating_weapon_$25_wDmgRoll}" class="dice" value="@{selected|repeating_weapon_$25_wDmgRoll}">t</button></span>
 	</div>
 </div>
 <input type="checkbox" name="attr_weapon-min-show"    class="minimize-show     cssbutton" title="Minimize all rows."           data-i18n-title="minimize-all-cmd"   value="1" /><span></span>
@@ -3248,7 +3274,7 @@
 			<label class="small-label2 repname">
 				<input type="text" name="attr_atkName" title="Name of Weapon @{repeating_weapon_$X_atkName}" data-li8n-title="weapon-name-title" data-i18n-placeholder="weapon-name" />
 				<span data-i18n="weapon-name">Name</span>
-				</label>
+			</label>
 			<label class="small-label2">
 				<select name="attr_wClass" data-li8n-title="weapon-class-title">
 					<option selected data-i18n="select-default" value="select">• Select</option>
@@ -3348,8 +3374,9 @@
 
 			<div class="sect expand">
 				<hr class="hr-button" style="margin-top:10px;">
-				<label class="label-button" style="height: 10px;"><input type='checkbox' name='attr_toggle-section' value="1" class="section-rep-collapse noshow" checked=""><b title="Show/Hide Advanced Weapon Details">Advanced</b></label> <!-- it doesnt need to be a checkbox -->
-				<input class='section-toggle' type='hidden' name='attr_toggle-section'>
+				<label class="label-button" style="height: 10px;">
+				<input type='checkbox' name='attr_toggle-section' value="1" class="section-rep-collapse noshow" checked=""><b title="Show/Hide Advanced Weapon Details">Advanced</b></label> <!-- it doesnt need to be a checkbox -->
+				<input class="section-toggle" type="hidden" name="attr_toggle-section">
 				<div class="section-hide">
 	<label class="inlineblock"><input type="checkbox" value="1" name="attr_q-accurate"    class="boldlabel-check noshow"> <b title="Gain +10 to Hit when the aim action is used." data-il8n="w-accurate" data-il8n-title="w-accurate-title">Accurate</b></label>
 	<label class="inlineblock"><input type="checkbox" value="1" name="attr_q-balanced"    class="boldlabel-check noshow"> <b title="Gain +10 to bonus to WS Tests when parrying." data-il8n="w-balanced" data-il8n-title="w-balanced-title">Balanced</b></label>
@@ -3377,8 +3404,8 @@
 	<label class="inlineblock"><input type="checkbox" value="1" name="attr_q-unreliable"  class="boldlabel-check noshow"> <b title="Jams on a 91+, even if fired on Semi- or Full-Auto." data-il8n="w-unreliable" data-il8n-title="w-unreliable-title">Unreliable</b></label>
 	<label class="inlineblock"><input type="checkbox" value="1" name="attr_q-unstable"    class="boldlabel-check noshow"> <b title="Deals variable damage.  Roll a 1d10.  1: Half Damage; 2-9: Normal Damage; 10: Double Damage." data-il8n="w-unstable" data-il8n-title="w-unstable-title">Unstable</b></label>
 	<label class="inlineblock"><input type="checkbox" value="1" name="attr_q-unwieldy"    class="boldlabel-check noshow"> <b title="Cannot be used to Parry." data-il8n="w-unwieldy" data-il8n-title="w-unwieldy-title">Unwieldy</b></label>
+				<hr>
 				</div>
-				
 				
 				<input type="checkbox" class="showarrow macro-text-show" title="Click to expand" data-i18n-title="showsect-cmd" aria-label="Show Macro Text" name="attr_macro-text-show" value="1"/>
 				<label class="showsect macro-text-showlabel" data-i18n="macro-text">Macro Text</label>
@@ -3394,7 +3421,7 @@
 						<textarea class="macro-text" title="@{repeating_weapon_$X_wHitRoll}" name="attr_wHitRoll">!scriptcard {{
 	--/| === ScriptCard Layout for Attack Rolls === |\--
 	--/| === Version 1.0                        === |\--
-	--/| === Date: 11/07/2022                   === |\--
+	--/| === Date: 01/17/2023                   === |\--
 	
 	--/| Local Variables --|\
 	--#sourceToken|@{selected|token_id}
@@ -3414,13 +3441,17 @@
 	
 	--/| ===== Strings =========== |\
 	--&DmgRoll|@{damage}
+	--&WeapNotes|@{notes}
 	
 	--/| ========== Numbers ============= |\
-	--=Clip|[*T:clip]
-	--=ClipMax|[*T:clip^]
-	--=Clip| $Clip
-	--=Clip Max|$ClipMax
+
 	--=AtkType|0
+	
+	--/| ===== Numbers =========== |\
+	--=DmgPen|@{penetration}
+	--=RollDamage|@{damage}
+	--=clip|@{clip}
+	--=clipMax|@clip|max}
 	
 	--/| ===== Weapon Proficiency Full Display =========== |\
 	--?@{wProficiency} -eq Yes|Yes
@@ -3491,12 +3522,6 @@
 		--&AtkType|[*S:bs-base] [BS]
 		--^wClassDisplayDone|
 	--:wClassDisplayDone|
-	
-	--/| ===== Numbers =========== |\
-	--=DmgPen|@{penetration}
-	--=RollDamage|@{damage}
-	--=clip|@{clip}
-	--=clipMax|@clip|max}
 	
 	--/| ===== Functions =========== |\
 	--~sqRange|distance;@{selected|token_id};@{target|token_id}
@@ -3590,7 +3615,9 @@
 	--=AtkRoll|1d100
 	--&BodyHit|Null
 	--=DegSuccess|[$AtkTarget] - [$AtkRoll] \ 10
-		
+	
+	--/| ===  WEAPON NOTES  ===
+	--+|[c][#f00][&WeapNotes][/#][/c]
 	--/| === WEAPON DETAILS ===
 	--+|[c]● Weapon Details ●[/c]
 	--+[t border=1 width=100%][tr][td][c]Class[/c][/td][td][c]Type[/c][/td][td][c]Damage[/c][/td][td][c]Pen[/c][/td][/tr][tr][td][c][&wClassDisplay][/c][/td][td][c][&DmgTypeDisplay][/c][/td][td][c]@{damage}[/c][/td][td][c][$DmgPen][/c][/td][/tr][/t]|
@@ -3711,7 +3738,7 @@
 	--=revRoll|[&revStr]
 	
 	--/| === Out of Range Values Included for Debugging ===
-	
+	--<|
 	--?[$revRoll] -le 0|>SetHitLocation;Error - Out of Range
 	--?[$revRoll] -le 10|>SetHitLocation;Head
 	--?[$revRoll] -ge 11 -and -le 20|>SetHitLocation;Right Arm
@@ -3728,8 +3755,11 @@
 	--:PROCEDURES|
 	--:SetHitLocation| accepts hit location as parameter
 	    --&BodyHit|[%1%]
-	--<|
-}}</textarea>
+	--&#60;|
+	--/| The HTML escape code is required because the "<>" is being interprated as an html tag.  It sucks.
+}}
+</textarea>
+<hr>
 <textarea class="macro-text" title="@{repeating_weapon_$X_wDmgRoll}" name="attr_wDmgRoll">!scriptcards {{
 	--/| === ScriptCard Layout for Damage Rolls === |\--
 	--/| === Dark Heresy 1e / With Homebrew         |\--
@@ -3972,7 +4002,7 @@
 						<input type="checkbox" name="attr_carried" style="width: 100%;" title="@{repeating_weapon_$X_carried}" value="1" CHECKED>
 						<span data-i18n-title="carried" data-i18n="carried" title="Checked means the weapon is counted towards weight.">Carried</span>
 					</label>
-					<label class="small-label2">
+					<label class="small-label2" style="width: 2.8em;">
 						<input type="text" name="attr_weight" class="weight" title="@{repeating_weapon_$X_weight}" value="0">
 						<span data-i18n="weight-abbrv">Weight (kg)</span>
 					</label>
@@ -4007,8 +4037,8 @@
 
         <!-- Footer Stuff -->
 
-        <div class="4colrow">
-            <div class="col wounds" style="width:15%">
+        <div class="IV-colrow">
+            <div class="col wounds" style="display: inline-table; width:15%">
                 <h3 data-i18n="wounds">Wounds</h3>
                 <div class="row">
                     <div class="item" style="width:60%">
@@ -4108,7 +4138,7 @@
                 </div>
 
                 <div class="row">
-                    <textarea name="attr_Disorders" placeholder="Disorders"
+                    <textarea name="attr_Disorders" class="usInput" placeholder="Disorders"
                         style="width:95%; margin:auto; height:75px;">
                     </textarea>
                 </div>
@@ -4142,7 +4172,7 @@
                 </div>
 
                 <div class="row">
-                    <textarea name="attr_Malignancies" placeholder="Malignancies"
+                    <textarea name="attr_Malignancies" class="usrInput" placeholder="Malignancies"
                         style="width:95%; margin:auto; height:75px;">
                     </textarea>
                 </div>
@@ -4470,7 +4500,7 @@
 			<div class="system-hide">
 <label class="inlineblock"><input type="checkbox" value="1" name="attr_cfg-dh1-toggle"     class="boldlabel-check noshow"> <b title="Use Only Dark Heresy 1e Rules."  data-il8n="cfg-dh1"     data-il8n-title="cfg-dh1-title"     >Core</b></label>
 <label class="inlineblock"><input type="checkbox" value="1" name="attr_cfg-dh1Asc-toggle"  class="boldlabel-check noshow"> <b title="Include Ascention Rules."        data-il8n="cfg-dh1Asc"  data-il8n-title="cfg-dh1Asc-title"  >Ascention</b></label>
-<label class="inlineblock"><input type="checkbox" value="1" name="attr_cfg-rt1-toggle"     class="boldlabel-check noshow"> <b title="Include Rogue Trader Rules."     data-il8n="cfg-rt1"     data-il8n-title="cfg-rt1-title"     >Rogue Trader</b></label>
+<label class="inlineblock"><input type="checkbox" value="1" name="attr_cfg-rt1-toggle"     class="boldlabel-check dblwide noshow"> <b title="Include Rogue Trader Rules."     data-il8n="cfg-rt1"     data-il8n-title="cfg-rt1-title"     >Rogue Trader</b></label>
 <label class="inlineblock"><input type="checkbox" value="1" name="attr_cfg-dw1-toggle"     class="boldlabel-check noshow"> <b title="Include Deathwatch Rules."       data-il8n="cfg-dw1"     data-il8n-title="cfg-dw1-title"     >Deathwatch</b></label>
 			</div>
 	</div><!-- END CONFIG TAB -->
@@ -4685,6 +4715,43 @@ on('change:wp-base   change:wp-unnatural ', _.bind(SetAbil,{},'wp'));
 on('change:fel-base change:fel-unnatural ', _.bind(SetAbil,{},'fel'));
 on('change:inf-base change:inf-unnatural ', _.bind(SetAbil,{},'inf'));
 
+/* SIZE FUNCTION */
+on('change:size change:tab', function() {
+console.log("============= Pull and Get Size Information =============");
+   console.log("Setting Size Totals . . .");
+    getAttrs(['size'], function(v) {
+	//	var sizeMod = 0
+	//	, skillMod = 0;
+		switch (parseInt(v['size'])) {
+            case 6: sizeMod =  60;ConcealMod = -60;sizeLabel = "Titanic"    ;break; // Titanic       -> Reaver Battle Titan, Ordinatus War Machine
+            case 5: sizeMod =  50;ConcealMod = -50;sizeLabel = "Monumental" ;break; // Monumental    -> Squiggoth, Baneblade
+            case 4: sizeMod =  40;ConcealMod = -40;sizeLabel = "Immense"    ;break; // Immense       -> Land Raider, Great Knarloc
+            case 3: sizeMod =  30;ConcealMod = -30;sizeLabel = "Massive"    ;break; // Massive       -> Battle Tank, Greater Daemon
+            case 2:  sizeMod =  20;ConcealMod = -20;sizeLabel = "Enormous"   ;break; // Enormous      -> Sentinel Walker, Krootox
+            case 1:  sizeMod =  10;ConcealMod = -10;sizeLabel = "Hulking"    ;break; // Hulking       -> Armoured Space Marine, Ogryn, Ork Nob
+            case 0:  sizeMod =   0;ConcealMod =   0;sizeLabel = "Average"    ;break; // << Average >> -> HUMAN, Eldar
+			case -1:  sizeMod = -10;ConcealMod =  10;sizeLabel = "Scrawny"    ;break; // Scrawny       -> Gretchen, HUMAN CHILD
+			case -2:  sizeMod = -20;ConcealMod =  20;sizeLabel = "Puny"       ;break; // Puny          -> Bolt pistol, Servo-Skull
+			case -3:  sizeMod = -30;ConcealMod =  30;sizeLabel = "Miniscule"  ;break; // Miniscule     -> Autoquil, knife
+		default: sizeMod = 0;
+		}
+		/* Horde, Size and Magnitude */
+		/* Magnitude     Equivilant Group         Size/Hit Modifier */
+		/* 30            A mob                    Massive           */
+		/* 60            A thronged phalanx       Immense           */
+		/* 90            A massed assault         Monumental        */
+		/* 120+          A serried tied of foes   Titanic           */
+		
+		console.log("======================= Hero Size: [" + parseInt(v["size"]) +"]");
+
+		setAttrs({
+			'size_mod': sizeMod,
+			'size_conceal': ConcealMod,
+			'size_label': sizeLabel
+        });
+    });
+});
+
 /* ===== PARAMETERS ==========
 destinations = the name of the attribute that stores the total quantity
         can be a single attribute, or an array: ['total_cost', 'total_weight']
@@ -4719,8 +4786,7 @@ destinations = the name of the attribute that stores the total quantity
             });
         });
     });
-	
-	
+
 	on('change:repeating_advancements:advancement1xp remove:repeating_advancements', function() {
 		repeatingSum("advancement_total1","advancements","advancement1xp");
 	});
