@@ -12,6 +12,7 @@
 
 /* Any color setting that uses AQUA is for debugging only as is any style that is prefaced with "DEBUG-" in all caps. */
 /* */
+
 /* === Core Universal styles === */
 .center {text-align: center;}
 .left {text-align: left;}
@@ -48,7 +49,7 @@
 	display: inline-block;
 	width: 13em;
     background-color: #4a6486;
-    color: White;
+    color: white; /* SELECTED ELELEMT-with-BACKGROUND COLOR */
 }
 .charsheet .sklabel + b:not(.offCase) {
     display: inline-block;
@@ -59,22 +60,27 @@
 	text-align: center;
 	border: 1px solid black;
 }
+.sheet-darkmode .tab-content .charsheet .sklabel + b:not(.offCase) {
+	border: 1px solid white;
+}
 /* === Fake Checkboxes and Show/Hide Triggers === */
+/* Set border "GRAY" so that it is visible in both normal mode and DARKMODE */
 .charsheet .boldlabel-check:checked + b:not(.offCase) {
 	display: inline-block;
 	width: 6em;
     background-color: #4a6486;
     color: White;
     border-radius: 5px;
-	border: 1px solid black;
+	border: 1px solid gray;
 }
+.dblwide + b {width: 13em !important;} /* Force 2x width to keep matching button rows */
 .charsheet .boldlabel-check + b:not(.offCase) {
     display: inline-block;
 	width: 6em;
     line-height: 1em;
     margin: 0px 0px 0px 0px;
     padding: 1px .5em 1px .25em;
-	border: 1px solid black;
+	border: 1px solid gray;
 	border-radius: 5px;
 	text-align: center;
 }
@@ -99,6 +105,15 @@
     font-size: 1.4em;
     color: brown;
 }
+.sheet-darkmode .tab-content .charsheet .section-rep-collapse + b {
+	/* CHECKED and SECTION EXPANDED */
+	color: #FFFFFF;
+}
+.sheet-darkmode .tab-content .charsheet .section-rep-collapse:not(:checked) + b {
+	/* UNCHECLED amd SECTION COLLAPSED */
+	color: #949699;
+}
+
 .charsheet .section-rep-collapse:checked + b {}
 .charsheet .section-rep-collapse:not(:checked) + b {}
 .charsheet .section-collapse:checked + b {/* This changes the style when checkbox label is not checked. */
@@ -126,6 +141,9 @@ div.section-hide,
 div.character-hide,
 div.system-hide {
     display: none;
+}
+input.section-toggle[value='1']~div.section-hide{
+    display: contents;
 }
 
 input.cfg-character-toggle[value='1'] ~ div.character-hide,
@@ -170,6 +188,8 @@ body {
     width: 100%;
 }
 
+.sheet-darkmode .tab-content .table-name, .sheet-darkmode .tab-content .nontable-name {background-color: #4a6486}
+.sheet-darkmode .tab-content .secondary-table-name, .sheet-darkmode .tab-content .secondary-nontable-name {background-color: #4d5a6a !important}
 .secondary-table-name {
     background-color: #4a6486 !important;
 }
@@ -359,7 +379,9 @@ div.flex {
 hr {
     border-color: black;
 }
-
+.sheet-darkmode .tab-content hr {
+border-color: white;
+}
 .npc-hr {
     padding: 0;
     margin: 0;
@@ -1015,8 +1037,8 @@ h2 label {
 	position:relative;
 }
 .showsect, h3.clickheader, h2.clickheader {
-	display:inline-block;
-	margin-left:-.25em;
+	display:inline-block !important;
+	margin-left:-.25em !important;
 }
 
 .skills  .showsect, .skill-minishow {
@@ -1053,7 +1075,7 @@ h2 label {
 .sect.expand .DCMod-show,
 .sect.expand .ESCfg-show,
 .sect.expand .misc-attack-show {
-	width:8em;
+	width:8em !important;
 	margin-right:-8em;
 }
 .sect.expand .iterations-showlabel {
@@ -1066,7 +1088,7 @@ h2 label {
 
 
 .sect.expand .id-show {
-	width:4em;
+	width:4em !important;
 	margin-right:-4em;
 }
 .split-column-show:not(:checked) ~ .repeating-fields .sect.expand .showarrow:first-child  {
@@ -1213,6 +1235,10 @@ h2 label {
 	content: counter(rep-items) '. ▼' !important;
 	width: auto !important;
 }
+.sheet-darkmode .tab-content .counted + span::before,
+.sheet-darkmode .tab-content .counted:checked + span::before {
+	color: white;
+}
 /* inside table */
 .counted , .counted.sect-show {
 	position:absolute !important;
@@ -1266,7 +1292,7 @@ hr.skinny {
 .repcontainer .repitem {
     padding: 2px 4px 1px 0px;
     margin: 1px 0 1px 0; /* originally 2px 0 4px 0 */
-    border: 1px solid black; /* originally 2px solid #CCCCCC */
+    border: 1px solid black !important; /* originally 2px solid #CCCCCC */
 	background-color: #eee; /* new */
     border-radius: 7px;
 	vertical-align:top;
@@ -1274,6 +1300,12 @@ hr.skinny {
 	display: block;
 	width:100%;
 }
+.sheet-darkmode .tab-content .repcontainer .repitem {
+    border: 1px solid gray !important; /* originally 2px solid #CCCCCC */
+	box-shadow: 1px 1px 5px 1px; /* Outset 1px X-offset 1px Y-offset 6px blur 1px spread -- Designed to increase contrast, nothing more */
+	background-color: #302e2e; /* new */
+}
+
 .repcontainer.editmode + .repcontrol {
 	margin-bottom:3em;
 }
@@ -1295,6 +1327,7 @@ hr.skinny {
 	display: block;
 	background:Black;
 	color:White;
+	width: 50% !important;
 }
 .repcontrol_move {
 	float: right;
@@ -1417,13 +1450,14 @@ hr.skinny {
 .table-header {
 	display: table-cell;
 	text-align: center;
-	font-style: italic;
-	font-weight: bold;
-	vertical-align: bottom;
-	background-color: LightGrey;
-	min-height:1.25em;
+	/* font-style: italic; font-weight: bold; vertical-align: bottom; -- OBSOLETE */
+	color: black;
+	background-color: ;
+	/* min-height:1.25em; -- OBSOLETE */
 }
-
+.sheet-darkmode .tab-content .charsheet .wrapper .table-header {
+	background-color: #525050
+}
 .charsheet .small-label2 {
     display: inline-block;
     /* margin: 0.3em 2px 0.5em 2px; This cannot be made !important. */
@@ -1588,9 +1622,9 @@ hr.skinny {
 
 .table-name, .nontable-name {
 	text-align: center;
-	font-weight: bold;
+	/* font-weight: bold; -- Redundant */
 	color:White;
-	background-color:Black;
+	background-color: #4a6486;
 	width: 100%;
 }
 
@@ -1862,6 +1896,38 @@ button.tab {
 	color        : #eaeaea;
 	border-radius: 35px;
 }
+/* quick and dirty dark mode */
+.sheet-darkmode .ui-dialog {
+	background-color: #0f0f0f;
+}
+
+.sheet-darkmode .tab-content,
+.sheet-darkmode .tab-content .charsheet .wrapper {
+	background-color: #18181a;
+	color: #e1e1e1;
+}
+/* CSS RESET - DARK MODE */
+.sheet-darkmode .tab-content .charsheet .wrapper div,  /* This rule is ABSOLUTELY REQUIRED! */
+.sheet-darkmode .tab-content .charsheet .wrapper span,
+.sheet-darkmode .tab-content .charsheet .wrapper label,
+.sheet-darkmode .tab-content .charsheet .wrapper h1,
+.sheet-darkmode .tab-content .charsheet .wrapper h2,
+.sheet-darkmode .tab-content .charsheet .wrapper h3,
+.sheet-darkmode .tab-content .charsheet .wrapper h4,
+.sheet-darkmode .tab-content .charsheet .wrapper h5,
+.sheet-darkmode .tab-content .charsheet .wrapper h6,
+.sheet-darkmode .tab-content .charsheet .wrapper p,
+.sheet-darkmode .tab-content .charsheet .wrapper table,
+.sheet-darkmode .tab-content .charsheet .wrapper caption,
+.sheet-darkmode .tab-content .charsheet .wrapper tbody,
+.sheet-darkmode .tab-content .charsheet .wrapper tfoot,
+.sheet-darkmode .tab-content .charsheet .wrapper thead,
+.sheet-darkmode .tab-content .charsheet .wrapper tr,
+.sheet-darkmode .tab-content .charsheet .wrapper th,
+.sheet-darkmode .tab-content .charsheet .wrapper td {
+	color: white;
+	}
+
 /* CSS Reset */
 .charsheet .wrapper div,  /* This rule is ABSOLUTELY REQUIRED! */
 .charsheet .wrapper span,
@@ -1886,8 +1952,8 @@ button.tab {
 	border        : 0;
 	font-size     : 100%;
 	font          : inherit;
-/*	color         : #404040; */
-	vertical-align: baseline;
+/*	color         : black; */
+/*	vertical-align: baseline; */
 	box-sizing    : border-box;
 }
 
@@ -1967,7 +2033,16 @@ button.dice {
 	box-sizing         : border-box;
 	-moz-box-sizing    : border-box;
 	-webkit-box-sizing : border-box;
+	color: black;
 }
+.sheet-darkmode .tab-content .charsheet .wrapper .button[type="roll"],
+.sheet-darkmode .tab-content .btn {color: #bc9cff !important; box-shadow: inset 0px 0px 9px 1px;}
+
+.charsheet .wrapper .repcontrol .btn {
+	color: black;
+	width: 50% !important;
+}
+
 
 .charsheet .wrapper button[type="roll"]:hover,
 .charsheet .wrapper .btn:hover,
@@ -2085,12 +2160,40 @@ button.dice {
 	writing-mode        : horizontal-tb;
 	-webkit-writing-mode: horizontal-tb;
 }
+
+.sheet-darkmode .tab-content .charsheet .wrapper .reptable-bg {
+	background-color: #2a2525;
+}
+
+.sheet-darkmode .tab-content .charsheet .wrapper input,
+.sheet-darkmode .tab-content .charsheet .wrapper select,
+.sheet-darkmode .tab-content .charsheet .wrapper textarea,
+.sheet-darkmode .tab-content .charsheet .wrapper input[type="number"] {
+/*	display             : inline-block; */
+	border-bottom       : 1px dotted gray;
+	color               : #ee5f5b;
+	background-color    : #302e2e !important;
+	box-shadow          : inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.sheet-darkmode .tab-content .charsheet .wrapper textarea {
+	background-color: #342121 !important;
+}
+
 .charsheet .wrapper .small-label2 input,
 .charsheet .wrapper .small-label2 input[type="number"],
 .charsheet .wrapper .small-label2 input[type="text"],
 .charsheet .wrapper .small-label2 select {
 	background-color: white;
 }
+.sheet-darkmode .tab-content .charsheet .wrapper .small-label2 input,
+.sheet-darkmode .tab-content .charsheet .wrapper .small-label2 input[type="number"],
+.sheet-darkmode .tab-content .charsheet .wrapper .small-label2 input[type="text"],
+.sheet-darkmode .tab-content .charsheet .wrapper .small-label2 select {
+	background-color: #302e2e;
+}
+
+
 .charsheet .wrapper input:not([type='checkbox']) {
 	-webkit-appearance: textfield;
 }
@@ -2134,32 +2237,57 @@ button.dice {
 	line-height   : 24px;
 	vertical-align: middle;
 }
-.charsheet .3colrow .col {
-	width       : calc(40% - 9px) !important;
+.charsheet .wrapper .IV-olrow .col {
+	width       : calc(15% - 9px) !important;
 	margin-right: 5px !important;
+	display: inline-table;
 }
 
-.charsheet .3colrow .col:nth-child(2) {
+.charsheet .wrapper .IV-colrow .col:nth-child(2) {
+	width       : calc(15% - 9px) !important;
+	margin-right: 5px;
+	display: inline-table;
+}
+.charsheet .wrapper .IV-colrow .col:nth-child(3) {
+	width       : calc(34% - 9px) !important;
+	margin-right: 5px;
+	display: inline-table;
+}
+
+.charsheet .wrapper .IV-colrow .col:last-child {
+	margin-right: 0 !important;
+	display: inline-table;
+}
+
+.charsheet .wrapper .III-colrow .col {
+	width       : calc(40% - 9px) !important;
+	margin-right: 5px !important;
+	display: inline-table; /* Added to force it to display in 3 columns... Broken code? */
+}
+
+.charsheet .wrapper .III-colrow .col:nth-child(2) {
 	width       : calc(20% - 9px) !important;
 	margin-right: 5px;
 }
 
-.charsheet .3colrow .col:last-child {
+.charsheet .wrapper .III-colrow .col:last-child {
 	margin-right: 0 !important;
 }
 
-.charsheet .2colrow .col {
+.charsheet .wrapper .II-colrow .col {
 	width       : calc(50% - 3px) !important;
 	margin-right: 2px !important;
+	display: inline-table;
 }
 
-.charsheet .2colrow .col:last-child {
+.charsheet .wrapper .II-colrow .col:last-child {
 	margin-right: 0 !important;
 }
 
-.charsheet .1colrow .col {
+.charsheet .wrapper .I-colrow .col {
 	width       : calc(100% - 3px) !important;
 	margin-right: 0 !important;
+	display: inline-table;
 }
 
 /* Table Container */
@@ -2251,10 +2379,13 @@ button.dice {
 	display       : inline-block;
 	width         : 100%;
 	height        : 28px;
-	vertical-align: middle;
+
 	margin        : 0 -2px;
 	text-align    : left;
 	padding       : 3px 2px;
+}
+.charsheet .wrapper .tight {  /* Clear margins  */
+	margin        : 0px !important;
 }
 
 .charsheet .wrapper .brackets {
@@ -2314,6 +2445,12 @@ button.dice {
 
 .charsheet .wrapper .item.huge {
 	width: calc(80% - 3%);
+}
+/* Trainins, Talents, Traits, Psykana, Faith, Gear & Currency Styles */
+.charsheet .wrapper div .taltext {
+	top: 14px;
+	margin: -9px 5px;
+	/*line-height: 2em; */
 }
 
 /* Characteristics */
